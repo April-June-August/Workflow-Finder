@@ -1,0 +1,31 @@
+name: Alfred Workflow Release
+
+on:
+  push:
+    tags: ["*"]
+
+env:
+  WORKFLOW_NAME: ${{ github.event.repository.name }}
+
+#───────────────────────────────────────────────────────────────────────────────
+
+jobs:
+  build:
+    runs-on: macos-latest
+    permissions: { contents: write }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build .alfredworkflow
+        run: |
+          zip --recurse-paths --symlinks "${{ env.WORKFLOW_NAME }}.alfredworkflow" . \
+            --exclude "README.md" ".git*" "Justfile" ".build-and-release.sh" \
+            ".rsync-exclude" ".editorconfig" ".typos.toml" ".markdownlint.*"
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generate_release_notes: true
+          files: ${{ env.WORKFLOW_NAME }}.alfredworkflow
