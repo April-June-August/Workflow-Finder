@@ -1,31 +1,34 @@
-# {{workflow-name}}
-![GitHub downloads](https://img.shields.io/github/downloads/chrisgrieser/{{workflow-id}}/total?label=GitHub%20downloads&style=plastic&logo=github)
-![Alfred Gallery downloads](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchrisgrieser%2F.config%2Frefs%2Fheads%2Fmain%2FAlfred.alfredpreferences%2Falfred-workflow-download-count.yaml&style=plastic&logo=alfred&label=Gallery%20downloads&color=%235C1F87&query={{workflow-id}})
-![Latest release](https://img.shields.io/github/v/release/chrisgrieser/{{workflow-id}}?label=Latest%20release&style=plastic)
+# <img src='workflow/icon.png' width='45' align='center' alt='icon'> Workflow Finder Alfred Workflow
 
-{{workflow-description}}
+Finds all your installed worflows and perform actions on them.
 
-- [ ] Showcase image to be inserted here.
+![](workflow/images/showcase_1.png)
+
+![Latest release](https://img.shields.io/github/v/release/Sponge-bink/Workflow-Finder?label=Latest%20release&style=plastic)
+
+[➡️ Download the latest release.](https://github.com/{{repo}}/releases/latest)
+ 
+
+If you want a workflow to find workflows from the [Alfred Gallery](https://alfred.app/), you should use [Alfred Gallery](https://alfred.app/workflows/alfredapp/alfred-gallery/) instead.
 
 ## Usage
-- ((Do this)) via the keyword `xxx`.
-- Press the [hotkey](https://www.alfredapp.com/help/workflows/triggers/hotkey/)
-  to ((do this))
+- Search for workflows via the keyword `wflow` (configurable from [configuration](https://www.alfredapp.com/help/workflows/user-configuration/) pane).
 
-## Installation
-[➡️ Download the latest release.](https://github.com/{{repo}}/releases/latest)
+- You can also search for workflows whose description contains the keyword or search for workflows by author.
 
-## About the developer
-In my day job, I am a sociologist studying the social mechanisms underlying the
-digital economy. For my PhD project, I investigate the governance of the app
-economy and how software ecosystems manage the tension between innovation and
-compatibility. If you are interested in this subject, feel free to get in touch.
+![](workflow/images/showcase_2.png)
 
-- [Website](https://chris-grieser.de/)
-- [Mastodon](https://pkm.social/@pseudometa)
-- [ResearchGate](https://www.researchgate.net/profile/Christopher-Grieser)
-- [LinkedIn](https://www.linkedin.com/in/christopher-grieser-ba693b17a/)
+- `↵` to edit the selected workflow. 
+- `⌘↵` to open the configuration window for the workflow. 
+- `⌘⇧↵` to copy the bundle ID for the workflow.
+- `⇧↵` to pass the workflow folder for the workflow to [File Action](https://www.alfredapp.com/blog/tips-and-tricks/file-actions-from-alfred-or-finder/).
+- `⌃↵` to pass the data folder for the workflow to File Action.
+- `⌥⌃↵` to pass the cache folder for the workflow to File Action.
+- `⇧⌃↵` to trash the workflow (can be undone in the Trash).
+- `⌥⇧⌘↵` to copy the title, bundle ID, version etc. for the workflow.
 
-<a href='https://ko-fi.com/Y8Y86SQ91' target='_blank'> <img height='36'
-style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3'
-border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+The copied info will contain title, bundle ID, version of the workflow (not this workflow), Alfred version, macOS version. Good for asking help about a workflow on the [Alfred Forum](https://www.alfredforum.com/forum/1-alfred-workflows/).
+
+Info for this workflow:
+
+`Workflow Finder・v0.1, bundle ID: com.may-june-july.listworkflows . Alfred version: 5.5.1 2273. macOS: 15.3.1.`

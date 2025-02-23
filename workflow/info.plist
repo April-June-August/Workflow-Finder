@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.may-june-july.listworkflows</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E7FF9B3C-4AD5-49A0-9FB3-4491B28335E2</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>CB8CFDF7-469F-440D-8D9B-8AE0E74EA814</string>
+				<key>modifiers</key>
+				<integer>786432</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>56DBD143-529E-4EBF-BA60-E70306D60A4E</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>562185FD-8718-4B70-8739-20A35E6802FF</string>
+				<key>modifiers</key>
+				<integer>1703936</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>9B72B274-89C1-43EF-8EB3-40ECFAD25D75</string>
+				<key>modifiers</key>
+				<integer>1179648</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>1D519836-B5A1-42C9-A882-D909C013868B</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>45C0E52D-1030-451F-93AB-01227150D2F8</string>
+				<key>modifiers</key>
+				<integer>393216</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>May June July</string>
+	<key>description</key>
+	<string>Find all your installed workflows</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Workflow Finder</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>jumpto</key>
+				<string>_popUpItemAction:</string>
+				<key>path</key>
+				<string></string>
+				<key>type</key>
+				<integer>100</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.actioninalfred</string>
+			<key>uid</key>
+			<string>E7FF9B3C-4AD5-49A0-9FB3-4491B28335E2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>jumpto</key>
+				<string>_popUpItemAction:</string>
+				<key>path</key>
+				<string></string>
+				<key>type</key>
+				<integer>100</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.actioninalfred</string>
+			<key>uid</key>
+			<string>CB8CFDF7-469F-440D-8D9B-8AE0E74EA814</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>jumpto</key>
+				<string>_popUpItemAction:</string>
+				<key>path</key>
+				<string></string>
+				<key>type</key>
+				<integer>100</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.actioninalfred</string>
+			<key>uid</key>
+			<string>56DBD143-529E-4EBF-BA60-E70306D60A4E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>562185FD-8718-4B70-8739-20A35E6802FF</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:search_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading workflows…</string>
+				<key>script</key>
+				<string>ruby list_workflow.rb $1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>{const:alfred_workflow_description}</string>
+				<key>title</key>
+				<string>{const:alfred_workflow_name}</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  var workflowID = argv[0];
+  var alfred = Application("com.runningwithcrayons.Alfred");
+  alfred.revealWorkflow(workflowID);
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>9B72B274-89C1-43EF-8EB3-40ECFAD25D75</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  var workflowID = argv[0];
+  var alfred = Application("com.runningwithcrayons.Alfred");
+  alfred.revealWorkflow(workflowID, { configuration: true });
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1D519836-B5A1-42C9-A882-D909C013868B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict/>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.core/files-and-folders/path.trash</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>45C0E52D-1030-451F-93AB-01227150D2F8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Workflow Finder Alfred Workflow
+
+Finds all your installed worflows and perform actions on them.
+
+![](images/showcase_1.png) 
+
+If you want a workflow to find workflows from the [Alfred Gallery](https://alfred.app/), you should use [Alfred Gallery](https://alfred.app/workflows/alfredapp/alfred-gallery/) instead.
+
+## Usage
+- Search for workflows via the keyword `wflow` (configurable from [configuration](https://www.alfredapp.com/help/workflows/user-configuration/) pane).
+
+- You can also search for workflows whose description contains the keyword or search for workflows by author.
+
+![](workflow/images/showcase_2.png)
+
+- `↵` to edit the selected workflow. 
+- `⌘↵` to open the configuration window for the workflow. 
+- `⌘⇧↵` to copy the bundle ID for the workflow.
+- `⇧↵` to pass the workflow folder for the workflow to [File Action](https://www.alfredapp.com/blog/tips-and-tricks/file-actions-from-alfred-or-finder/).
+- `⌃↵` to pass the data folder for the workflow to File Action.
+- `⌥⌃↵` to pass the cache folder for the workflow to File Action.
+- `⇧⌃↵` to trash the workflow (can be undone in the Trash).
+- `⌥⇧⌘↵` to copy the title, bundle ID, version etc. for the workflow.
+
+The copied info will contain title, bundle ID, version of the workflow (not this workflow), Alfred version, macOS version. Good for asking help about a workflow on the [Alfred Forum](https://www.alfredforum.com/forum/1-alfred-workflows/).
+
+Info for this workflow:
+
+`Workflow Finder・v0.1, bundle ID: com.may-june-july.listworkflows . Alfred version: 5.5.1 2273. macOS: 15.3.1.`</string>
+	<key>uidata</key>
+	<dict>
+		<key>1D519836-B5A1-42C9-A882-D909C013868B</key>
+		<dict>
+			<key>xpos</key>
+			<real>505</real>
+			<key>ypos</key>
+			<real>490</real>
+		</dict>
+		<key>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</key>
+		<dict>
+			<key>xpos</key>
+			<real>505</real>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
+		<key>45C0E52D-1030-451F-93AB-01227150D2F8</key>
+		<dict>
+			<key>xpos</key>
+			<real>645</real>
+			<key>ypos</key>
+			<real>565</real>
+		</dict>
+		<key>562185FD-8718-4B70-8739-20A35E6802FF</key>
+		<dict>
+			<key>xpos</key>
+			<real>645</real>
+			<key>ypos</key>
+			<real>265</real>
+		</dict>
+		<key>56DBD143-529E-4EBF-BA60-E70306D60A4E</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>195</real>
+		</dict>
+		<key>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</key>
+		<dict>
+			<key>xpos</key>
+			<real>140</real>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
+		<key>9B72B274-89C1-43EF-8EB3-40ECFAD25D75</key>
+		<dict>
+			<key>xpos</key>
+			<real>645</real>
+			<key>ypos</key>
+			<real>420</real>
+		</dict>
+		<key>CB8CFDF7-469F-440D-8D9B-8AE0E74EA814</key>
+		<dict>
+			<key>xpos</key>
+			<real>645</real>
+			<key>ypos</key>
+			<real>110</real>
+		</dict>
+		<key>E7FF9B3C-4AD5-49A0-9FB3-4491B28335E2</key>
+		<dict>
+			<key>xpos</key>
+			<real>505</real>
+			<key>ypos</key>
+			<real>30</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>wflow</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Search Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>search_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Only show enabled workflows</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>only_show_enabled</string>
+		</dict>
+	</array>
+	<key>version</key>
+	<string>0.1</string>
+	<key>webaddress</key>
+	<string>https://github.com/Sponge-bink/</string>
+</dict>
+</plist>
