@@ -451,9 +451,11 @@ Info for this workflow:
 			<string>only_show_enabled</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
 	<string>0.1</string>
 	<key>webaddress</key>
-	<string>https://github.com/Sponge-bink/</string>
+	<string>https://github.com/Sponge-bink/Workflow-Finder</string>
 </dict>
 </plist>
