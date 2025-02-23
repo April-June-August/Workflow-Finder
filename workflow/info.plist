@@ -315,7 +315,7 @@
 	<key>readme</key>
 	<string># Workflow Finder Alfred Workflow
 
-Finds all your installed worflows and perform actions on them.
+Finds all your installed workflows and perform actions on them.
 
 ![](images/showcase_1.png) 
 
@@ -451,8 +451,6 @@ Info for this workflow:
 			<string>only_show_enabled</string>
 		</dict>
 	</array>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
 	<string>0.1</string>
 	<key>webaddress</key>
