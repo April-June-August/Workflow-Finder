@@ -18,14 +18,14 @@ If you want a workflow to find workflows from the [Alfred Gallery](https://alfre
 
 ![](workflow/images/showcase_2.png)
 
-- `↵` to edit the selected workflow. 
-- `⌘↵` to open the configuration window for the workflow. 
-- `⌘⇧↵` to copy the bundle ID for the workflow.
-- `⇧↵` to pass the workflow folder for the workflow to [File Action](https://www.alfredapp.com/blog/tips-and-tricks/file-actions-from-alfred-or-finder/).
-- `⌃↵` to pass the data folder for the workflow to File Action.
-- `⌥⌃↵` to pass the cache folder for the workflow to File Action.
-- `⇧⌃↵` to trash the workflow (can be undone in the Trash).
-- `⌥⇧⌘↵` to copy the title, bundle ID, version etc. for the workflow.
+- <kbd>↩&#xFE0E;</kbd> to edit the selected workflow. 
+- <kbd>⌘</kbd><kbd>↩&#xFE0E;</kbd> to open the configuration window for the workflow. 
+- <kbd>⌘</kbd><kbd>⇧</kbd><kbd>↩&#xFE0E;</kbd> to copy the bundle ID for the workflow.
+- <kbd>⇧</kbd><kbd>↩&#xFE0E;</kbd> to pass the workflow folder for the workflow to [File Action](https://www.alfredapp.com/blog/tips-and-tricks/file-actions-from-alfred-or-finder/).
+- <kbd>⌃</kbd><kbd>↩&#xFE0E;</kbd> to pass the data folder for the workflow to File Action.
+- <kbd>⌥</kbd><kbd>⌃</kbd><kbd>↩&#xFE0E;</kbd> to pass the cache folder for the workflow to File Action.
+- <kbd>⇧</kbd><kbd>⌃</kbd><kbd>↩&#xFE0E;</kbd> to trash the workflow (can be undone in the Trash).
+- <kbd>⌥</kbd><kbd>⇧</kbd><kbd>⌘</kbd><kbd>↩&#xFE0E;</kbd> to copy the title, bundle ID, version etc. for the workflow.
 
 The copied info will contain title, bundle ID, version of the workflow (not this workflow), Alfred version, macOS version. Good for asking help about a workflow on the [Alfred Forum](https://www.alfredforum.com/forum/1-alfred-workflows/).
 
