@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'fileutils'
 require 'json'
 require 'open3'
@@ -10,7 +12,7 @@ Alfred_version_build = ENV['alfred_version_build']
 
 Only_show_enabled = ENV['only_show_enabled'] == '1'
 
-Keyword = ARGV[0]
+# Keyword = ARGV[0]
 
 def parse_plist(plist_path)
   json_str = `plutil -convert json -o - "#{plist_path}" 2>&1`
@@ -46,7 +48,7 @@ def parse_plist(plist_path)
     bundleid = plist['bundleid'] || ''
 
     createdby = plist['createdby'].empty? ? '' : "by #{plist['createdby']}"
-    next unless createdby.downcase.include?(Keyword.downcase) || description.downcase.include?(Keyword.downcase) || name.downcase.include?(Keyword.downcase)
+    # next unless createdby.downcase.include?(Keyword.downcase) || description.downcase.include?(Keyword.downcase) || name.downcase.include?(Keyword.downcase)
 
     subtitle_parts = []
     
@@ -89,21 +91,22 @@ def parse_plist(plist_path)
       mods: mods,
       action: {},
       arg: folder_name,
-      icon: icon
+      icon: icon,
+      match: "#{description} #{createdby} #{name}"
     }
 
     items << item
   end
 
-  if items.empty?
-    puts JSON.generate({ items: [
-      {
-        title: "No Workflow Found",
-        subtitle: "No #{Only_show_enabled ? 'enabled ' : 'installed ' }workflow found for query “#{Keyword}”",
-        arg: ""
-      }
-    ]})
-    return
-  end
+  # if items.empty?
+  #   puts JSON.generate({ items: [
+  #     {
+  #       title: "No Workflow Found",
+  #       subtitle: "No #{Only_show_enabled ? 'enabled ' : 'installed ' }workflow found for query “#{Keyword}”",
+  #       arg: ""
+  #     }
+  #   ]})
+  #   return
+  # end
 
-  puts JSON.generate({ items: items })
+  puts JSON.generate({ cache: { seconds: 3600 }, items: items })
