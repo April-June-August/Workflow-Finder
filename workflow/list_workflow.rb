@@ -92,6 +92,7 @@ def parse_plist(plist_path)
       action: {},
       arg: folder_name,
       icon: icon,
+      uid: title,
       match: "#{description} #{createdby} #{name}"
     }
 
