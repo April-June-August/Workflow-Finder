@@ -32,8 +32,11 @@ def parse_plist(plist_path)
 
   items = []
 
+  enabled_items = []
+  disabled_items = []
+  
   plist_paths.each do |plist_path|
-    
+
     next unless File.exist?(plist_path)
 
     folder_name = File.basename(File.dirname(plist_path))
@@ -51,40 +54,40 @@ def parse_plist(plist_path)
     # next unless createdby.downcase.include?(Keyword.downcase) || description.downcase.include?(Keyword.downcase) || name.downcase.include?(Keyword.downcase)
 
     subtitle_parts = []
-    
+
     subtitle_parts << createdby unless createdby.empty?
     subtitle_parts << description unless description.empty?
     subtitle = subtitle_parts.empty? ? "No author or Description" : subtitle_parts.join('・')
 
     title_parts = []
-    title_parts << name
+    title_parts << (enabled ? "#{name}" : "🚫 #{name}")
     title_parts << version unless version.empty?
     title = title_parts.join('・')
 
     mods = {}
     # copy bundle Id
-    mods[:'shift+cmd'] = bundleid.empty? ? { subtitle: "No Bundle Id", valid: false} : { subtitle: "Copy Bundle Id: #{bundleid}", arg: bundleid}
+    mods[:'shift+cmd'] = bundleid.empty? ? { subtitle: "No Bundle Id", valid: false } : { subtitle: "Copy Bundle Id: #{bundleid}", arg: bundleid }
 
-    mods[:cmd] = { subtitle: "Open configuration"}
-    
-    mods[:shift] = { subtitle: "Workflow folder", arg: File.dirname(plist_path)}
-    
+    mods[:cmd] = { subtitle: "Open configuration" }
+
+    mods[:shift] = { subtitle: "Workflow folder", arg: File.dirname(plist_path) }
+
     # pass data folder
-    mods[:ctrl] = !bundleid.empty? && File.directory?(File.join(Workflow_data_folder, bundleid)) ? { subtitle: "Data folder", arg: File.join(Workflow_data_folder, bundleid)} : {subtitle: 'No data folder found', valid: false}
-    
+    mods[:ctrl] = !bundleid.empty? && File.directory?(File.join(Workflow_data_folder, bundleid)) ? { subtitle: "Data folder", arg: File.join(Workflow_data_folder, bundleid) } : { subtitle: 'No data folder found', valid: false }
+
     # pass cache folder
-    mods[:'alt+ctrl'] = !bundleid.empty? && File.directory?(File.join(Workflow_cache_folder, bundleid)) ? { subtitle: "Cache folder", arg: File.join(Workflow_cache_folder, bundleid)} : {subtitle: 'No cache folder found', valid: false}
-    
+    mods[:'alt+ctrl'] = !bundleid.empty? && File.directory?(File.join(Workflow_cache_folder, bundleid)) ? { subtitle: "Cache folder", arg: File.join(Workflow_cache_folder, bundleid) } : { subtitle: 'No cache folder found', valid: false }
+
     # trash workflow
-    mods[:'shift+ctrl'] = { subtitle: "Trash workflow", arg: File.dirname(plist_path)}    
+    mods[:'shift+ctrl'] = { subtitle: "Trash workflow", arg: File.dirname(plist_path) }
 
     # copy information for workflow
-    mods[:'shift+cmd+alt'] = { subtitle: "Copy workflow info", arg: "#{name}・#{version.empty? ? 'version empty' : version}, bundle ID: #{bundleid.empty? ? 'no bundle Id' : bundleid} . Alfred version: #{Alfred_version} #{Alfred_version_build}. macOS: #{`sw_vers -productVersion`.strip}."}    
-
+    mods[:'shift+cmd+alt'] = { subtitle: "Copy workflow info", arg: "#{name}・#{version.empty? ? 'version empty' : version}, bundle ID: #{bundleid.empty? ? 'no bundle Id' : bundleid} . Alfred version: #{Alfred_version} #{Alfred_version_build}. macOS: #{`sw_vers -productVersion`.strip}." }
+  
     icon = {
-      path: File.exist?(File.join(File.dirname(plist_path), '/icon.png')) ? File.join(File.dirname(plist_path), 'icon.png') : './Empty.png' 
+      path: File.exist?(File.join(File.dirname(plist_path), 'icon.png')) ? File.join(File.dirname(plist_path), 'icon.png') : './Empty.png'
     }
-
+  
     item = {
       title: title,
       subtitle: subtitle.empty? ? 'No description or version' : subtitle,
@@ -95,10 +98,17 @@ def parse_plist(plist_path)
       uid: title,
       match: "#{description} #{createdby} #{name}"
     }
-
-    items << item
+  
+    if enabled
+      enabled_items << item
+    else
+      disabled_items << item
+    end
   end
-
+  
+  # Concatenate enabled and disabled items, keeping their internal order
+  items = enabled_items + disabled_items
+    
   # if items.empty?
   #   puts JSON.generate({ items: [
   #     {
