@@ -51,6 +51,9 @@ def parse_plist(plist_path)
     bundleid = plist['bundleid'] || ''
 
     createdby = plist['createdby'].empty? ? '' : "by #{plist['createdby']}"
+
+    # do not process keyword in code
+    # since we're using Script Filter caching
     # next unless createdby.downcase.include?(Keyword.downcase) || description.downcase.include?(Keyword.downcase) || name.downcase.include?(Keyword.downcase)
 
     subtitle_parts = []
@@ -109,6 +112,9 @@ def parse_plist(plist_path)
   # Concatenate enabled and disabled items, keeping their internal order
   items = enabled_items + disabled_items
     
+
+  # do not add empty item
+  # since we're using Script Filter caching
   # if items.empty?
   #   puts JSON.generate({ items: [
   #     {
