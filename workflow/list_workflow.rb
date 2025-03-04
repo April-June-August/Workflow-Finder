@@ -120,4 +120,4 @@ def parse_plist(plist_path)
   #   return
   # end
 
-  puts JSON.generate({ cache: { seconds: 3600 }, items: items })
+  puts JSON.generate({ cache: { seconds: 7200 }, items: items })
