@@ -67,28 +67,58 @@ def parse_plist(plist_path)
     title_parts << version unless version.empty?
     title = title_parts.join('・')
 
+    secondary_menu_json = {}
+    secondary_menu_json_items = []
+
     mods = {}
+
+    # Open configuration
+    mods[:cmd] = { subtitle: "Open configuration" }
+
+    secondary_menu_json_items << { title: 'Open Configuration', subtitle: "Open configuration of ‘#{name}’ in Alfred Preferences.", variables: { chosen_action: 'Open Configuration'}, icon: { path: 'icons/Alfred Preferences.png' } }
+
     # copy bundle Id
     mods[:'shift+cmd'] = bundleid.empty? ? { subtitle: "No Bundle Id", valid: false } : { subtitle: "Copy Bundle Id: #{bundleid}", arg: bundleid }
 
-    mods[:cmd] = { subtitle: "Open configuration" }
+    secondary_menu_json_items << { title: 'Copy Bundle Id', subtitle: bundleid.empty? ? 'No Bundle Id' : "Copy Bundle Id for ‘#{name}’: #{bundleid}", valid: !bundleid.empty?, arg: bundleid, variables: { chosen_action: 'Copy Bundle Id'}, icon: { path: 'icons/copy.png' } }
 
+    # copy information for workflow
+    info_arg = "#{name}・#{version.empty? ? 'version empty' : version}, bundle ID: #{bundleid.empty? ? 'no bundle Id' : bundleid} . Alfred version: #{Alfred_version} #{Alfred_version_build}. macOS: #{`sw_vers -productVersion`.strip}."
+
+    mods[:'shift+cmd+alt'] = { subtitle: "Copy workflow info", arg: info_arg }
+
+    secondary_menu_json_items << { title: 'Copy Information for Workflow', subtitle: "Copy workflow info for ‘#{name}’. Name, version, bundle Id, macOS and Alfred version included.", arg: info_arg, variables: { chosen_action: 'Copy Information for Workflow' }, icon: { path: 'icons/copy.png' } }
+
+    # Workflow folder
     mods[:shift] = { subtitle: "Workflow folder", arg: File.dirname(plist_path) }
+
+    secondary_menu_json_items << { title: 'Show Workflow Folder', subtitle: "Show workflow folder of ‘#{name}’ in Finder", arg: File.dirname(plist_path), variables: { chosen_action: 'Show Workflow Folder'} , icon: { path: 'icons/finder.png' } }
 
     # pass data folder
     mods[:ctrl] = !bundleid.empty? && File.directory?(File.join(Workflow_data_folder, bundleid)) ? { subtitle: "Data folder", arg: File.join(Workflow_data_folder, bundleid) } : { subtitle: 'No data folder found', valid: false }
 
+    secondary_menu_json_items << ( !bundleid.empty? && File.directory?(File.join(Workflow_data_folder, bundleid)) ? { title: 'Show Data Folder', subtitle: "Show data folder of ‘#{name}’ in Finder", arg: File.join(Workflow_data_folder, bundleid), variables: { chosen_action: 'Show Data Folder'} , icon: { path: 'icons/finder.png' } } : { title: "No Data folder Found", subtitle: "No data folder found for workflow ‘#{name}’.", valid: false, icon: { path: 'icons/Empty.png' } } )
+
     # pass cache folder
     mods[:'alt+ctrl'] = !bundleid.empty? && File.directory?(File.join(Workflow_cache_folder, bundleid)) ? { subtitle: "Cache folder", arg: File.join(Workflow_cache_folder, bundleid) } : { subtitle: 'No cache folder found', valid: false }
+
+    secondary_menu_json_items << ( !bundleid.empty? && File.directory?(File.join(Workflow_cache_folder, bundleid)) ? { title: 'Show Cache Folder', subtitle: "Show cache folder of ‘#{name}’ in Finder", arg: File.join(Workflow_cache_folder, bundleid), variables: { chosen_action: 'Show Cache Folder'}, icon: { path: 'icons/finder.png' } } : { title: "No cache folder Found", subtitle: "No cache folder found for workflow ‘#{name}’.", valid: false, icon: { path: 'icons/Empty.png' } } )
 
     # trash workflow
     mods[:'shift+ctrl'] = { subtitle: "Trash workflow", arg: File.dirname(plist_path) }
 
-    # copy information for workflow
-    mods[:'shift+cmd+alt'] = { subtitle: "Copy workflow info", arg: "#{name}・#{version.empty? ? 'version empty' : version}, bundle ID: #{bundleid.empty? ? 'no bundle Id' : bundleid} . Alfred version: #{Alfred_version} #{Alfred_version_build}. macOS: #{`sw_vers -productVersion`.strip}." }
+    secondary_menu_json_items << { title: 'Trash Workflow', subtitle: "Trash workflow ‘#{name}’. Can be undone from the Trash.", arg: File.dirname(plist_path), variables: { chosen_action: 'Trash Workflow'}, icon: { path: 'icons/trash.png' } }
+
+    # export workflow
+    secondary_menu_json_items << { title: 'Export Workflow', subtitle: "Export as ‘#{name}.alfredworkflow’ to your Desktop", arg: File.dirname(plist_path), variables: { chosen_action: 'Export Workflow'}, icon: { path: 'icons/alfred_workflow.png' }}
+
+    # secondary Script Filter
+    secondary_menu_json[:items] = secondary_menu_json_items
+    mods[:'alt'] = { subtitle: "Show All Actions", variables: { script_filter_res: secondary_menu_json.to_json }, arg: ""}
+
   
     icon = {
-      path: File.exist?(File.join(File.dirname(plist_path), 'icon.png')) ? File.join(File.dirname(plist_path), 'icon.png') : './Empty.png'
+      path: File.exist?(File.join(File.dirname(plist_path), 'icon.png')) ? File.join(File.dirname(plist_path), 'icon.png') : 'icons/Empty.png'
     }
   
     item = {
