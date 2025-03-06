@@ -27,7 +27,7 @@ If you want a workflow to find workflows from the [Alfred Gallery](https://alfre
 - <kbd>⇧</kbd><kbd>⌃</kbd><kbd>↩&#xFE0E;</kbd> to trash the workflow (can be undone in the Trash).
 - <kbd>⌥</kbd><kbd>⇧</kbd><kbd>⌘</kbd><kbd>↩&#xFE0E;</kbd> to copy the title, bundle ID, version etc. for the workflow.
 
-- <kbd>⌥</kbd> to show all actions above for the selected workflow — including export the workflow to a `.alfredworkflow` file. 
+- <kbd>⌥</kbd> to show all actions above for the selected workflow — including export the workflow to an `.alfredworkflow` file. 
 
 ![](workflow/images/showcase_3.png)
 
