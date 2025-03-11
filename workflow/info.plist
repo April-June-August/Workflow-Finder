@@ -153,7 +153,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -360,7 +360,7 @@
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string>./list_workflow.rb</string>
+				<string>list_workflow</string>
 				<key>skipuniversalaction</key>
 				<true/>
 				<key>subtext</key>
@@ -914,7 +914,7 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>1370</real>
 			<key>ypos</key>
-			<real>695</real>
+			<real>690</real>
 		</dict>
 		<key>DB73B891-AB2D-4D82-9A33-2BF2A560DE3B</key>
 		<dict>
@@ -970,8 +970,8 @@ Info for this workflow:
 		</dict>
 	</array>
 	<key>version</key>
-	<string>0.5</string>
+	<string>0.6</string>
 	<key>webaddress</key>
-	<string>https://github.com/Sponge-bink/Workflow-Finder</string>
+	<string>https://github.com/April-June-August/Workflow-Finder/</string>
 </dict>
 </plist>
