@@ -8,11 +8,36 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>14E0F996-2264-4F9C-B49A-8B78AF395DC1</key>
+		<key>0FA969D7-A42B-4EAB-90D5-B2367188ACCA</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>56DBD143-529E-4EBF-BA60-E70306D60A4E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>26A8E42D-D23F-48C5-83B0-3955A4B86842</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>80325719-AE82-45CC-BDBC-597D090038A0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>14E0F996-2264-4F9C-B49A-8B78AF395DC1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -38,7 +63,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>56DBD143-529E-4EBF-BA60-E70306D60A4E</string>
+				<string>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -51,7 +76,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>56DBD143-529E-4EBF-BA60-E70306D60A4E</string>
+				<string>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -65,6 +90,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>45C0E52D-1030-451F-93AB-01227150D2F8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0FA969D7-A42B-4EAB-90D5-B2367188ACCA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -331,6 +369,33 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  var workflowID = argv[0];
+  var alfred = Application("com.runningwithcrayons.Alfred");
+  alfred.revealWorkflow(workflowID);
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -378,33 +443,6 @@
 			<string>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>function run(argv) {
-  var workflowID = argv[0];
-  var alfred = Application("com.runningwithcrayons.Alfred");
-  alfred.revealWorkflow(workflowID);
-}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>7</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -485,14 +523,6 @@
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>4A601980-D1E2-4A2F-9A05-2FAD9C9226C5</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>config</key>
 			<dict>
 				<key>jumpto</key>
@@ -506,6 +536,54 @@
 			<string>alfred.workflow.action.actioninalfred</string>
 			<key>uid</key>
 			<string>56DBD143-529E-4EBF-BA60-E70306D60A4E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>4A601980-D1E2-4A2F-9A05-2FAD9C9226C5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:folder_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Actions in Alfred</string>
+						<key>outputlabel</key>
+						<string>Actions in Alfred</string>
+						<key>uid</key>
+						<string>26A8E42D-D23F-48C5-83B0-3955A4B86842</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Open in Finder</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>0FA969D7-A42B-4EAB-90D5-B2367188ACCA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -648,6 +726,21 @@
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string></string>
+				<key>sourcefile</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>80325719-AE82-45CC-BDBC-597D090038A0</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -788,6 +881,13 @@ Info for this workflow:
 `Workflow Finder・v0.1, bundle ID: com.may-june-july.listworkflows . Alfred version: 5.5.1 2273. macOS: 15.3.1.`</string>
 	<key>uidata</key>
 	<dict>
+		<key>0FA969D7-A42B-4EAB-90D5-B2367188ACCA</key>
+		<dict>
+			<key>xpos</key>
+			<real>1310</real>
+			<key>ypos</key>
+			<real>500</real>
+		</dict>
 		<key>14E0F996-2264-4F9C-B49A-8B78AF395DC1</key>
 		<dict>
 			<key>note</key>
@@ -846,9 +946,9 @@ Info for this workflow:
 		<key>56DBD143-529E-4EBF-BA60-E70306D60A4E</key>
 		<dict>
 			<key>xpos</key>
-			<real>1205</real>
+			<real>1510</real>
 			<key>ypos</key>
-			<real>480</real>
+			<real>415</real>
 		</dict>
 		<key>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</key>
 		<dict>
@@ -859,12 +959,26 @@ Info for this workflow:
 			<key>ypos</key>
 			<real>650</real>
 		</dict>
+		<key>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</key>
+		<dict>
+			<key>xpos</key>
+			<real>1205</real>
+			<key>ypos</key>
+			<real>510</real>
+		</dict>
 		<key>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</key>
 		<dict>
 			<key>xpos</key>
 			<real>145</real>
 			<key>ypos</key>
 			<real>85</real>
+		</dict>
+		<key>80325719-AE82-45CC-BDBC-597D090038A0</key>
+		<dict>
+			<key>xpos</key>
+			<real>1510</real>
+			<key>ypos</key>
+			<real>540</real>
 		</dict>
 		<key>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</key>
 		<dict>
@@ -967,6 +1081,32 @@ Info for this workflow:
 			<string>checkbox</string>
 			<key>variable</key>
 			<string>only_show_enabled</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Open in Finder</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Open in Finder</string>
+						<string>Open in Finder</string>
+					</array>
+					<array>
+						<string>Actions in Alfred</string>
+						<string>Actions in Alfred</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Choose to open the workflow (data, cache) folder in Finder or to pass it to Alfred</string>
+			<key>label</key>
+			<string>Folder Action</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>folder_action</string>
 		</dict>
 	</array>
 	<key>version</key>
