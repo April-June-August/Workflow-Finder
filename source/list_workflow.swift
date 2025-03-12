@@ -100,7 +100,8 @@ for workflowDir in workflowDirs {
         "title": "Open Configuration",
         "subtitle": "Open configuration of ‘\(name)’ in Alfred Preferences.",
         "variables": ["chosen_action": "Open Configuration"],
-        "icon": ["path": "icons/Alfred Preferences.png"]
+        "icon": ["path": "icons/Alfred Preferences.png"],
+        "arg": folderName
     ])
     
     // 2. Copy Bundle Id
