@@ -4,7 +4,7 @@ Finds all your installed workflows and perform actions on them.
 
 ![](workflow/images/showcase_1.png)
 
-<!-- ![Latest release](https://img.shields.io/github/v/release/Sponge-bink/Workflow-Finder?label=Latest%20release&style=plastic) -->
+<!-- ![Latest release](https://img.shields.io/github/v/release/April-June-August/Workflow-Finder?label=Latest%20release&style=plastic) -->
 
 [➡️ Download the latest release](../../releases/latest)
  
