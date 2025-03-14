@@ -27,6 +27,13 @@ func getMacOSVersion() -> String {
     return "\(os.majorVersion).\(os.minorVersion).\(os.patchVersion)"
 }
 
+struct WorkflowHistory: Codable {
+    struct Preferences: Codable {
+        let workflows: [String]
+    }
+    let preferences: Preferences
+}
+
 // MARK: - Main
 
 let fileManager = FileManager.default
@@ -254,13 +261,34 @@ for workflowDir in workflowDirs {
 }
 
 // Concatenate enabled and disabled items (keeping their order)
-let allItems = enabledItems + disabledItems
+var allItems = enabledItems + disabledItems
+
+// Prioritize recently edited workflows
+let historyFile = URL(fileURLWithPath: ("~/Library/Application Support/Alfred/history.json" as NSString).expandingTildeInPath)
+let historyUIDs: [String] = {
+    guard let data = try? Data(contentsOf: historyFile),
+          let history = try? JSONDecoder().decode(WorkflowHistory.self, from: data)
+    else { return [] }
+    return history.preferences.workflows
+}()
+
+var historyItems = [[String: Any]]()
+var nonHistoryItems = [[String: Any]]()
+for item in allItems {
+    guard let uid = item["arg"] as? String else { continue }
+    historyUIDs.contains(uid) ? historyItems.append(item) : nonHistoryItems.append(item)
+}
+
+historyItems.sort { item1, item2 in
+    let uid1 = item1["arg"] as! String
+    let uid2 = item2["arg"] as! String
+    return historyUIDs.firstIndex(of: uid1)! < historyUIDs.firstIndex(of: uid2)!
+}
+
+let sortedAllItems = historyItems + nonHistoryItems
 
 // Output the final JSON
-let output: [String: Any] = [
-    "items": allItems
-]
-
+let output: [String: Any] = ["items": sortedAllItems]
 if let jsonData = try? JSONSerialization.data(withJSONObject: output, options: []),
    let jsonString = String(data: jsonData, encoding: .utf8) {
     print(jsonString)
