@@ -37,7 +37,7 @@ guard let workflowDirs = try? fileManager.contentsOfDirectory(at: workflowsDir,
                                                                 includingPropertiesForKeys: nil,
                                                                 options: .skipsHiddenFiles)
 else {
-    print("{\"cache\": {\"seconds\": 7200}, \"items\": []}")
+    print("{\"items\": [{\"title\": \"Error\", \"subtitle\": \"Could not read workflows directory.\"}]}")
     exit(0)
 }
 
@@ -243,7 +243,6 @@ for workflowDir in workflowDirs {
         "action": [String: Any](),  // empty action object
         "arg": folderName,
         "icon": iconDict,
-        "uid": title,
         "match": "\(desc) \(createdby) \(name)"
     ]
     
@@ -257,7 +256,7 @@ for workflowDir in workflowDirs {
 // Concatenate enabled and disabled items (keeping their order)
 let allItems = enabledItems + disabledItems
 
-// Output the final JSON with a cache timeout of 7200 seconds.
+// Output the final JSON
 let output: [String: Any] = [
     "items": allItems
 ]
