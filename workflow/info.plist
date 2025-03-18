@@ -175,16 +175,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>470396EF-1C4E-426D-92B9-B874C19CD98C</string>
-				<key>modifiers</key>
-				<integer>786432</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>2F6D1BEC-5076-4BAE-B299-2A73AF63D5C8</string>
 				<key>modifiers</key>
 				<integer>524288</integer>
@@ -192,6 +182,16 @@
 				<string></string>
 				<key>vitoclose</key>
 				<true/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>470396EF-1C4E-426D-92B9-B874C19CD98C</string>
+				<key>modifiers</key>
+				<integer>786432</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -230,6 +230,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>98673EE6-6FB8-4804-BFAD-379CE4C215DA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9B72B274-89C1-43EF-8EB3-40ECFAD25D75</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>9AE0290F-3CE2-4416-828C-DF2D3FDD9AF3</key>
 		<array>
 			<dict>
@@ -241,6 +254,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>7D944EBC-80EF-4B4B-842B-D23C61B52C93</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>98673EE6-6FB8-4804-BFAD-379CE4C215DA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>4BA74EDC-FD2B-4AB3-8F4E-01A16AF526D3</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -318,7 +343,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>BB68BAB8-C7F7-44C0-94D9-495CCFEF05D0</string>
+				<string>F870BAB8-3592-4C2C-BD9E-091E744514DD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -347,6 +372,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F870BAB8-3592-4C2C-BD9E-091E744514DD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BB68BAB8-C7F7-44C0-94D9-495CCFEF05D0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -491,7 +529,7 @@
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
-			<string>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</string>
+			<string>98673EE6-6FB8-4804-BFAD-379CE4C215DA</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -513,6 +551,14 @@
 			<string>9B72B274-89C1-43EF-8EB3-40ECFAD25D75</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -554,54 +600,6 @@
 				<array>
 					<dict>
 						<key>inputstring</key>
-						<string>{var:folder_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Actions in Alfred</string>
-						<key>outputlabel</key>
-						<string>Actions in Alfred</string>
-						<key>uid</key>
-						<string>26A8E42D-D23F-48C5-83B0-3955A4B86842</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>Open in Finder</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>0FA969D7-A42B-4EAB-90D5-B2367188ACCA</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>14E0F996-2264-4F9C-B49A-8B78AF395DC1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
 						<string>{var:chosen_action}</string>
 						<key>matchcasesensitive</key>
 						<false/>
@@ -613,6 +611,20 @@
 						<string>Open Configuration</string>
 						<key>uid</key>
 						<string>7D944EBC-80EF-4B4B-842B-D23C61B52C93</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Copy Workflow Name</string>
+						<key>outputlabel</key>
+						<string>Copy Workflow Name</string>
+						<key>uid</key>
+						<string>4BA74EDC-FD2B-4AB3-8F4E-01A16AF526D3</string>
 					</dict>
 					<dict>
 						<key>inputstring</key>
@@ -728,6 +740,54 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:folder_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Actions in Alfred</string>
+						<key>outputlabel</key>
+						<string>Actions in Alfred</string>
+						<key>uid</key>
+						<string>26A8E42D-D23F-48C5-83B0-3955A4B86842</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Open in Finder</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>0FA969D7-A42B-4EAB-90D5-B2367188ACCA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>14E0F996-2264-4F9C-B49A-8B78AF395DC1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>openwith</key>
 				<string></string>
 				<key>sourcefile</key>
@@ -739,14 +799,6 @@
 			<string>80325719-AE82-45CC-BDBC-597D090038A0</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>470396EF-1C4E-426D-92B9-B874C19CD98C</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -798,6 +850,14 @@
 			<integer>3</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>470396EF-1C4E-426D-92B9-B874C19CD98C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>tasksettings</key>
@@ -843,6 +903,14 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>F870BAB8-3592-4C2C-BD9E-091E744514DD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># Workflow Finder Alfred Workflow
@@ -884,9 +952,9 @@ Info for this workflow:
 		<key>0FA969D7-A42B-4EAB-90D5-B2367188ACCA</key>
 		<dict>
 			<key>xpos</key>
-			<real>1310</real>
+			<real>1300</real>
 			<key>ypos</key>
-			<real>500</real>
+			<real>585</real>
 		</dict>
 		<key>14E0F996-2264-4F9C-B49A-8B78AF395DC1</key>
 		<dict>
@@ -895,7 +963,7 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>510</real>
+			<real>595</real>
 		</dict>
 		<key>1D519836-B5A1-42C9-A882-D909C013868B</key>
 		<dict>
@@ -907,9 +975,9 @@ Info for this workflow:
 		<key>2F6D1BEC-5076-4BAE-B299-2A73AF63D5C8</key>
 		<dict>
 			<key>xpos</key>
-			<real>365</real>
+			<real>355</real>
 			<key>ypos</key>
-			<real>590</real>
+			<real>655</real>
 		</dict>
 		<key>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</key>
 		<dict>
@@ -921,9 +989,9 @@ Info for this workflow:
 		<key>45C0E52D-1030-451F-93AB-01227150D2F8</key>
 		<dict>
 			<key>xpos</key>
-			<real>1205</real>
+			<real>1200</real>
 			<key>ypos</key>
-			<real>620</real>
+			<real>705</real>
 		</dict>
 		<key>470396EF-1C4E-426D-92B9-B874C19CD98C</key>
 		<dict>
@@ -932,7 +1000,7 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>580</real>
+			<real>665</real>
 		</dict>
 		<key>4A601980-D1E2-4A2F-9A05-2FAD9C9226C5</key>
 		<dict>
@@ -941,14 +1009,14 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>425</real>
+			<real>510</real>
 		</dict>
 		<key>56DBD143-529E-4EBF-BA60-E70306D60A4E</key>
 		<dict>
 			<key>xpos</key>
-			<real>1510</real>
+			<real>1500</real>
 			<key>ypos</key>
-			<real>415</real>
+			<real>500</real>
 		</dict>
 		<key>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</key>
 		<dict>
@@ -957,14 +1025,14 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>650</real>
+			<real>735</real>
 		</dict>
 		<key>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</key>
 		<dict>
 			<key>xpos</key>
-			<real>1205</real>
+			<real>1195</real>
 			<key>ypos</key>
-			<real>510</real>
+			<real>595</real>
 		</dict>
 		<key>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</key>
 		<dict>
@@ -976,9 +1044,9 @@ Info for this workflow:
 		<key>80325719-AE82-45CC-BDBC-597D090038A0</key>
 		<dict>
 			<key>xpos</key>
-			<real>1510</real>
+			<real>1500</real>
 			<key>ypos</key>
-			<real>540</real>
+			<real>625</real>
 		</dict>
 		<key>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</key>
 		<dict>
@@ -987,7 +1055,7 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>270</real>
+			<real>355</real>
 		</dict>
 		<key>9424C880-E3D9-4724-AB50-1B098DBDF2C7</key>
 		<dict>
@@ -998,19 +1066,28 @@ Info for this workflow:
 			<key>ypos</key>
 			<real>200</real>
 		</dict>
+		<key>98673EE6-6FB8-4804-BFAD-379CE4C215DA</key>
+		<dict>
+			<key>note</key>
+			<string>Copy Workflow Name</string>
+			<key>xpos</key>
+			<real>990</real>
+			<key>ypos</key>
+			<real>270</real>
+		</dict>
 		<key>9AE0290F-3CE2-4416-828C-DF2D3FDD9AF3</key>
 		<dict>
 			<key>xpos</key>
 			<real>565</real>
 			<key>ypos</key>
-			<real>520</real>
+			<real>570</real>
 		</dict>
 		<key>9B72B274-89C1-43EF-8EB3-40ECFAD25D75</key>
 		<dict>
 			<key>xpos</key>
-			<real>1205</real>
+			<real>1200</real>
 			<key>ypos</key>
-			<real>310</real>
+			<real>325</real>
 		</dict>
 		<key>9E5B61FB-4400-4257-A205-F3515DBDFE14</key>
 		<dict>
@@ -1019,16 +1096,16 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>340</real>
+			<real>425</real>
 		</dict>
 		<key>BB68BAB8-C7F7-44C0-94D9-495CCFEF05D0</key>
 		<dict>
 			<key>note</key>
 			<string>https://www.alfredforum.com/topic/9873-how-to-package-workflows-via-the-command-line/</string>
 			<key>xpos</key>
-			<real>1370</real>
+			<real>1350</real>
 			<key>ypos</key>
-			<real>690</real>
+			<real>775</real>
 		</dict>
 		<key>DB73B891-AB2D-4D82-9A33-2BF2A560DE3B</key>
 		<dict>
@@ -1038,6 +1115,15 @@ Info for this workflow:
 			<real>990</real>
 			<key>ypos</key>
 			<real>115</real>
+		</dict>
+		<key>F870BAB8-3592-4C2C-BD9E-091E744514DD</key>
+		<dict>
+			<key>note</key>
+			<string>Export Workflow</string>
+			<key>xpos</key>
+			<real>990</real>
+			<key>ypos</key>
+			<real>805</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -1100,7 +1186,7 @@ Info for this workflow:
 				</array>
 			</dict>
 			<key>description</key>
-			<string>Choose to open the workflow (data, cache) folder in Finder or to pass it to Alfred</string>
+			<string>Choose whether to open the workflow (data, cache) folder in Finder or to pass it to Alfred</string>
 			<key>label</key>
 			<string>Folder Action</string>
 			<key>type</key>
@@ -1108,9 +1194,30 @@ Info for this workflow:
 			<key>variable</key>
 			<string>folder_action</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+				<key>verticalsize</key>
+				<integer>3</integer>
+			</dict>
+			<key>description</key>
+			<string>Categories to exclude from results. One line per category.</string>
+			<key>label</key>
+			<string>Exclude Category</string>
+			<key>type</key>
+			<string>textarea</string>
+			<key>variable</key>
+			<string>excluded_categories</string>
+		</dict>
 	</array>
 	<key>version</key>
-	<string>0.8</string>
+	<string>0.9.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/April-June-August/Workflow-Finder/</string>
 </dict>

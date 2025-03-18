@@ -20,6 +20,10 @@ struct Environment {
     static let alfredVersion = env["alfred_version"]!
     static let alfredVersionBuild = env["alfred_version_build"]!
     static let onlyShowEnabled = (env["only_show_enabled"] ?? "0") == "1"
+    static let excludedCategories = (env["excluded_categories"] ?? "")
+    .components(separatedBy: .newlines)
+    .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+    .filter { !$0.isEmpty }
 }
 
 func getMacOSVersion() -> String {
@@ -64,26 +68,33 @@ for workflowDir in workflowDirs {
     // Determine if workflow is enabled.
     // (Ruby: enabled = (plist['disabled'] == false))
     let enabled = (plist["disabled"] as? Bool) == false
-    
     // If only-show-enabled is set, skip disabled workflows.
     if Environment.onlyShowEnabled && !enabled {
         continue
     }
+
+    let categoryRaw = plist["category"] as? String ?? ""
+    // If the workflow is in an excluded category, skip it.
+    if Environment.excludedCategories.contains(categoryRaw) {
+        continue
+    }
     
-    // Extract basic workflow information.
+    // Extract other basic workflow information.
     let name = plist["name"] as? String ?? "Unknown"
     let desc = plist["description"] as? String ?? ""
+    let category = categoryRaw.isEmpty ? "" : "🧷 \(categoryRaw)"
     let versionRaw = plist["version"] as? String ?? ""
     let version = versionRaw.isEmpty ? "" : "v\(versionRaw)"
     let bundleid = plist["bundleid"] as? String ?? ""
     let createdbyRaw = plist["createdby"] as? String ?? ""
-    let createdby = createdbyRaw.isEmpty ? "" : "by \(createdbyRaw)"
+    let createdby = createdbyRaw.isEmpty ? "" : "by 👤\(createdbyRaw)"
     
     // Build subtitle (combine creator and description, or fallback).
     var subtitleParts = [String]()
     if !createdby.isEmpty { subtitleParts.append(createdby) }
+    if !category.isEmpty { subtitleParts.append(category) }
     if !desc.isEmpty { subtitleParts.append(desc) }
-    let subtitle = subtitleParts.isEmpty ? "No author or Description" : subtitleParts.joined(separator: "・")
+    let subtitle = subtitleParts.isEmpty ? "No author, category or description" : subtitleParts.joined(separator: "・")
     
     // Build title – add a warning symbol if disabled, and include version if available.
     var titleParts = [String]()
@@ -128,8 +139,17 @@ for workflowDir in workflowDirs {
             "icon": ["path": "icons/copy.png"]
         ])
     }
+
+    // 3. Copy workflow name
+    secondaryMenuItems.append([
+        "title": "Copy Workflow Name",
+        "subtitle": "Copy workflow name ‘\(name)’",
+        "arg": name,
+        "variables": ["chosen_action": "Copy Workflow Name"],
+        "icon": ["path": "icons/copy.png"]
+    ])
     
-    // 3. Copy workflow info (includes macOS and Alfred version)
+    // 4. Copy workflow info (includes macOS and Alfred version)
     let macVersion = getMacOSVersion()
     let infoArg = "\(name)・\(version.isEmpty ? "version empty" : version), bundle ID: \(bundleid.isEmpty ? "no bundle Id" : bundleid) . Alfred version: \(Environment.alfredVersion) \(Environment.alfredVersionBuild). macOS: \(macVersion)."
     secondaryMenuItems.append([
@@ -140,7 +160,7 @@ for workflowDir in workflowDirs {
         "icon": ["path": "icons/copy.png"]
     ])
     
-    // 4. Show Workflow Folder
+    // 5. Show Workflow Folder
     secondaryMenuItems.append([
         "title": "Show Workflow Folder",
         "subtitle": "Show workflow folder of ‘\(name)’ in Finder",
@@ -149,7 +169,7 @@ for workflowDir in workflowDirs {
         "icon": ["path": "icons/finder.png"]
     ])
     
-    // 5. Data Folder – use the directory part of alfred_workflow_data
+    // 6. Data Folder – use the directory part of alfred_workflow_data
     let workflowDataFolder = URL(fileURLWithPath: Environment.workflowDataFolder)
         .deletingLastPathComponent()
         .appendingPathComponent(bundleid).path
@@ -173,7 +193,7 @@ for workflowDir in workflowDirs {
         ])
     }
     
-    // 6. Cache Folder – use the directory part of alfred_workflow_cache
+    // 7. Cache Folder – use the directory part of alfred_workflow_cache
     let workflowCacheFolder = URL(fileURLWithPath: Environment.workflowCacheFolder)
         .deletingLastPathComponent()
         .appendingPathComponent(bundleid).path
@@ -197,7 +217,7 @@ for workflowDir in workflowDirs {
         ])
     }
     
-    // 7. Trash Workflow
+    // 8. Trash Workflow
     secondaryMenuItems.append([
         "title": "Trash Workflow",
         "subtitle": "Trash workflow ‘\(name)’. Can be undone from the Trash.",
@@ -206,7 +226,7 @@ for workflowDir in workflowDirs {
         "icon": ["path": "icons/trash.png"]
     ])
     
-    // 8. Export Workflow
+    // 9. Export Workflow
     secondaryMenuItems.append([
         "title": "Export Workflow",
         "subtitle": "Export as ‘\(name).alfredworkflow’ to your Desktop",
