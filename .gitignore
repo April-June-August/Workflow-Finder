@@ -4,3 +4,4 @@
 # Alfred
 prefs.plist
 *.alfredworkflow
+workflow/list_workflow
