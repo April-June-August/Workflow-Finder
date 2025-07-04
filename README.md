@@ -1,6 +1,6 @@
 # <img src='workflow/icon.png' width='45' align='center' alt='icon'> Workflow Finder Alfred Workflow
 
-Finds all your installed workflows and perform actions on them.
+Find all your installed workflows and perform actions on them.
 
 ![](workflow/images/showcase_1.png)
 
