@@ -1229,8 +1229,10 @@ Info for this workflow:
 			<string>excluded_categories</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0</string>
+	<string>2025.12</string>
 	<key>webaddress</key>
 	<string>https://github.com/April-June-August/Workflow-Finder</string>
 </dict>
