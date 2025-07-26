@@ -175,7 +175,7 @@ for workflowDir in workflowDirs {
         .appendingPathComponent(bundleid).path
     var dataFolderMod: [String: Any] = [:]
     if !bundleid.isEmpty && fileManager.isDirectory(atPath: workflowDataFolder) {
-        dataFolderMod = ["subtitle": "Data folder", "arg": workflowDataFolder]
+        dataFolderMod = ["subtitle": "Data folder", "arg": workflowDataFolder, "icon": ["path": "icons/finder.png"]]
         secondaryMenuItems.append([
             "title": "Show Data Folder",
             "subtitle": "Show data folder of ‘\(name)’ in Finder",
@@ -184,7 +184,7 @@ for workflowDir in workflowDirs {
             "icon": ["path": "icons/finder.png"]
         ])
     } else {
-        dataFolderMod = ["subtitle": "No data folder found", "valid": false]
+        dataFolderMod = ["subtitle": "No data folder found", "valid": false, "icon": ["path": "icons/Empty.png"]]
         secondaryMenuItems.append([
             "title": "No Data folder Found",
             "subtitle": "No data folder found for workflow ‘\(name)’.",
@@ -199,7 +199,7 @@ for workflowDir in workflowDirs {
         .appendingPathComponent(bundleid).path
     var cacheFolderMod: [String: Any] = [:]
     if !bundleid.isEmpty && fileManager.isDirectory(atPath: workflowCacheFolder) {
-        cacheFolderMod = ["subtitle": "Cache folder", "arg": workflowCacheFolder]
+        cacheFolderMod = ["subtitle": "Cache folder", "arg": workflowCacheFolder, "icon": ["path": "icons/finder.png"]]
         secondaryMenuItems.append([
             "title": "Show Cache Folder",
             "subtitle": "Show cache folder of ‘\(name)’ in Finder",
@@ -208,7 +208,7 @@ for workflowDir in workflowDirs {
             "icon": ["path": "icons/finder.png"]
         ])
     } else {
-        cacheFolderMod = ["subtitle": "No cache folder found", "valid": false]
+        cacheFolderMod = ["subtitle": "No cache folder found", "valid": false, "icon": ["path": "icons/Empty.png"]]
         secondaryMenuItems.append([
             "title": "No cache folder Found",
             "subtitle": "No cache folder found for workflow ‘\(name)’.",
@@ -242,20 +242,21 @@ for workflowDir in workflowDirs {
     
     // --- Build the main modifiers dictionary ---
     var mods = [String: [String: Any]]()
-    mods["cmd"] = ["subtitle": "Open configuration"]
+    mods["cmd"] = ["subtitle": "Open configuration", "icon": ["path": "icons/Alfred Preferences.png"]]
     if bundleid.isEmpty {
-        mods["shift+cmd"] = ["subtitle": "No Bundle Id", "valid": false]
+        mods["shift+cmd"] = ["subtitle": "No Bundle Id", "valid": false, "icon": ["path": "icons/copy.png"]]
     } else {
-        mods["shift+cmd"] = ["subtitle": "Copy Bundle Id: \(bundleid)", "arg": bundleid]
+        mods["shift+cmd"] = ["subtitle": "Copy Bundle Id: \(bundleid)", "arg": bundleid, "icon": ["path": "icons/copy.png"]]
     }
-    mods["shift+cmd+alt"] = ["subtitle": "Copy workflow info", "arg": infoArg]
-    mods["shift"] = ["subtitle": "Workflow folder", "arg": workflowFolderPath]
+    mods["shift+cmd+alt"] = ["subtitle": "Copy workflow info", "arg": infoArg, "icon": ["path": "icons/copy.png"]]
+    mods["shift"] = ["subtitle": "Workflow folder", "arg": workflowFolderPath, "icon": ["path": "icons/finder.png"]]
     mods["ctrl"] = dataFolderMod
     mods["alt+ctrl"] = cacheFolderMod
-    mods["shift+ctrl"] = ["subtitle": "Trash workflow", "arg": workflowFolderPath]
+    mods["shift+ctrl"] = ["subtitle": "Trash workflow", "arg": workflowFolderPath, "icon": ["path": "icons/trash.png"]]
     mods["alt"] = ["subtitle": "Show All Actions",
                    "variables": ["script_filter_res": secondaryMenuJsonString],
-                   "arg": ""]
+                   "arg": "",
+                   "icon": ["path": "icons/actions.png"]]
     
     // Determine the main icon (use icon.png if it exists, otherwise fallback)
     let iconPathCandidate = workflowDir.appendingPathComponent("icon.png").path
