@@ -4,13 +4,22 @@ readonly workflow_dir="${1}"
 readonly info_plist="${workflow_dir}/info.plist"
 
 if [[ "$#" -ne 1 ]] || [[ ! -f "${info_plist}" ]]; then
-  echo 'You need to give this script a single argument: the path to a valid workflow directory.'
-  echo 'The workflow will be saved to the Desktop.'
+  echo 'You need to give this script a single argument: the path to a valid workflow directory.' >&2
+  echo 'The workflow will be saved to the configured export location.' >&2
   exit 1
 fi
 
 readonly workflow_name="$(/usr/libexec/PlistBuddy -c 'print name' "${info_plist}")"
-readonly workflow_file="${HOME}/Desktop/${workflow_name}.alfredworkflow"
+readonly export_dir="${export_workflows_to:-${HOME}/Desktop}"
+readonly workflow_file="${export_dir}/${workflow_name}.alfredworkflow"
+
+# Check if file already exists
+if [[ -f "${workflow_file}" ]]; then
+  # Get the directory of this script (where notificator is located)
+  readonly script_dir="$(cd "$(dirname "$0")" && pwd)"
+  "${script_dir}/notificator" --title "Workflow Finder" --subtitle "❌️ Export failed" --message "A workflow named '${workflow_name}.alfredworkflow' already exists in ${export_dir}"
+  exit 1
+fi
 
 if /usr/libexec/PlistBuddy -c 'print variablesdontexport' "${info_plist}" &> /dev/null; then
   readonly workflow_dir_to_package="$(mktemp -d)"
@@ -24,4 +33,4 @@ fi
 
 DITTONORSRC=1 /usr/bin/ditto -ck "${workflow_dir_to_package}" "${workflow_file}"
 /usr/bin/zip "${workflow_file}" --delete 'prefs.plist' > /dev/null
-echo "Exported worflow to ${workflow_file}"
+echo "${workflow_file}"

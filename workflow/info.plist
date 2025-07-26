@@ -379,6 +379,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>BB68BAB8-C7F7-44C0-94D9-495CCFEF05D0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EE60A7B3-2E84-4ED1-A60B-06A482833B2D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>DB73B891-AB2D-4D82-9A33-2BF2A560DE3B</key>
 		<array>
 			<dict>
@@ -388,6 +401,33 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EE60A7B3-2E84-4ED1-A60B-06A482833B2D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56DBD143-529E-4EBF-BA60-E70306D60A4E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>10519C85-2B1A-4FE5-9572-88AA12C8AD2D</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>20B58494-0D6D-4A7B-894C-46AB01D784CC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>E05DECAC-891B-4680-9F10-58A8BA4CA9E8</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -956,6 +996,52 @@ fi</string>
 			<integer>2</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:action_on_exported_workflow}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Action in Alfred</string>
+						<key>outputlabel</key>
+						<string>Action in Alfred</string>
+						<key>uid</key>
+						<string>10519C85-2B1A-4FE5-9572-88AA12C8AD2D</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:action_on_exported_workflow}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Reveal in Finder</string>
+						<key>outputlabel</key>
+						<string>Reveal in Finder</string>
+						<key>uid</key>
+						<string>E05DECAC-891B-4680-9F10-58A8BA4CA9E8</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Nothing</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>EE60A7B3-2E84-4ED1-A60B-06A482833B2D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -965,7 +1051,7 @@ fi</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string># Workflow Finder Alfred Workflow
+	<string># Workflow Finder
 
 Finds all your installed workflows and perform actions on them.
 
@@ -1041,14 +1127,14 @@ Info for this workflow:
 		<key>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</key>
 		<dict>
 			<key>xpos</key>
-			<real>1375</real>
+			<real>1410</real>
 			<key>ypos</key>
 			<real>85</real>
 		</dict>
 		<key>45C0E52D-1030-451F-93AB-01227150D2F8</key>
 		<dict>
 			<key>xpos</key>
-			<real>1200</real>
+			<real>1605</real>
 			<key>ypos</key>
 			<real>705</real>
 		</dict>
@@ -1162,7 +1248,7 @@ Info for this workflow:
 			<key>note</key>
 			<string>https://www.alfredforum.com/topic/9873-how-to-package-workflows-via-the-command-line/</string>
 			<key>xpos</key>
-			<real>1375</real>
+			<real>1155</real>
 			<key>ypos</key>
 			<real>775</real>
 		</dict>
@@ -1174,6 +1260,13 @@ Info for this workflow:
 			<real>990</real>
 			<key>ypos</key>
 			<real>115</real>
+		</dict>
+		<key>EE60A7B3-2E84-4ED1-A60B-06A482833B2D</key>
+		<dict>
+			<key>xpos</key>
+			<real>1320</real>
+			<key>ypos</key>
+			<real>780</real>
 		</dict>
 		<key>F870BAB8-3592-4C2C-BD9E-091E744514DD</key>
 		<dict>
@@ -1249,7 +1342,7 @@ Info for this workflow:
 				</array>
 			</dict>
 			<key>description</key>
-			<string>Choose to open/reveal the workflow/data/cache folder in Finder or to pass it to Alfred</string>
+			<string>Choose to open or reveal the workflow/data/cache folder in Finder or to pass it to Alfred</string>
 			<key>label</key>
 			<string>Folder Action</string>
 			<key>type</key>
@@ -1277,6 +1370,57 @@ Info for this workflow:
 			<string>textarea</string>
 			<key>variable</key>
 			<string>excluded_categories</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>~/Desktop</string>
+				<key>filtermode</key>
+				<integer>1</integer>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+			</dict>
+			<key>description</key>
+			<string>Choose a folder for the workflows to be exported to. Defaults to Desktop.</string>
+			<key>label</key>
+			<string>Export Workflows To</string>
+			<key>type</key>
+			<string>filepicker</string>
+			<key>variable</key>
+			<string>export_workflows_to</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Reveal in Finder</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Nothing</string>
+						<string>Nothing</string>
+					</array>
+					<array>
+						<string>Action in Alfred</string>
+						<string>Action in Alfred</string>
+					</array>
+					<array>
+						<string>Reveal in Finder</string>
+						<string>Reveal in Finder</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>What to do with the exported workflow.</string>
+			<key>label</key>
+			<string>Action on Exported Workflow</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>action_on_exported_workflow</string>
 		</dict>
 	</array>
 	<key>version</key>
