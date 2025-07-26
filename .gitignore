@@ -5,3 +5,6 @@
 prefs.plist
 *.alfredworkflow
 workflow/list_workflow
+
+# Claude Code
+CLAUDE.md
