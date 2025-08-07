@@ -1,4 +1,4 @@
-# <img src='workflow/icon.png' width='45' align='center' alt='icon'> Workflow Finder Alfred Workflow
+# <img src='workflow/icon.png' width='45' align='center' alt='icon'> Workflow Finder — An Alfred Workflow
 
 Find all your installed workflows and perform actions on them.
 
