@@ -35,3 +35,7 @@ The copied info will contain title, bundle ID, version of the workflow (not this
 Info for this workflow:
 
 `Workflow Finder・v0.1, bundle ID: com.may-june-july.listworkflows . Alfred version: 5.5.1 2273. macOS: 15.3.1.`
+
+## License
+
+This project is licensed under the [MIT license](./LICENSE).
