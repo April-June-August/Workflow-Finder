@@ -6,8 +6,13 @@ Find all your installed workflows and perform actions on them.
 
 <!-- ![Latest release](https://img.shields.io/github/v/release/April-June-August/Workflow-Finder?label=Latest%20release&style=plastic) -->
 
-[➡️ Download the latest release](../../releases/latest)
- 
+## Installation
+
+1. [➡️ Download the latest release](../../releases/latest)
+
+2. Double click the `.alfredworkflow` file to install
+
+Note that the [Alfred Powerpack](https://www.alfredapp.com/powerpack/) is required to use workflows.
 
 If you want a workflow to find workflows from the [Alfred Gallery](https://alfred.app/), you should use [Alfred Gallery](https://alfred.app/workflows/alfredapp/alfred-gallery/) instead.
 
