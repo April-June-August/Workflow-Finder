@@ -2,16 +2,11 @@
 
 Find all your installed workflows and perform actions on them.
 
+[⤓ Install on the Alfred Gallery](https://alfred.app/workflows/mayjunejuly/workflow-finder/)
+
 ![](workflow/images/showcase_1.png)
 
 <!-- ![Latest release](https://img.shields.io/github/v/release/April-June-August/Workflow-Finder?label=Latest%20release&style=plastic) -->
-
-## Installation
-
-1. [↓ Download the latest release](../../releases/latest)
-
-2. Double-click the `.alfredworkflow` file to install
-
 
 If you want a workflow to find workflows from the [Alfred Gallery](https://alfred.app/), you should use [Alfred Gallery](https://alfred.app/workflows/alfredapp/alfred-gallery/) instead.
 
