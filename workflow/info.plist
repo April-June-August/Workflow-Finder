@@ -1305,20 +1305,46 @@ Info for this workflow:
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<true/>
+				<false/>
 				<key>required</key>
 				<false/>
 				<key>text</key>
 				<string></string>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Show</string>
 			<key>label</key>
-			<string>Only Show Enabled Workflows</string>
+			<string>Show Enabled Workflows Only</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
 			<string>only_show_enabled</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Description</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Description</string>
+						<string>Description</string>
+					</array>
+					<array>
+						<string>Keywords</string>
+						<string>Keywords</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>in subtitles of result. Also allows you to search workflows by the keyword.</string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>description_or_keywords_to_show_in_subtitle</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1363,7 +1389,7 @@ Info for this workflow:
 				<integer>3</integer>
 			</dict>
 			<key>description</key>
-			<string>Categories to exclude from results. One line per category.</string>
+			<string>Categories to exclude from results. One category per line.</string>
 			<key>label</key>
 			<string>Exclude Category</string>
 			<key>type</key>

@@ -24,6 +24,7 @@ struct Environment {
     .components(separatedBy: .newlines)
     .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
     .filter { !$0.isEmpty }
+    static let showKeywords = (env["description_or_keywords_to_show_in_subtitle"] ?? "Description") == "Keywords"
 }
 
 func getMacOSVersion() -> String {
@@ -36,6 +37,99 @@ struct WorkflowHistory: Codable {
         let workflows: [String]
     }
     let preferences: Preferences
+}
+
+// MARK: - Keyword Extraction
+
+func resolveVariableKeyword(_ keyword: String, workflowDir: URL, userConfig: [[String: Any]]?) -> String {
+    // Find all {var:varname} patterns using regex
+    let pattern = #"\{var:([^}]+)\}"#
+    guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
+        return keyword
+    }
+    
+    var resolvedKeyword = keyword
+    let nsString = keyword as NSString
+    let matches = regex.matches(in: keyword, options: [], range: NSRange(location: 0, length: nsString.length))
+    
+    // Load prefs.plist if it exists
+    let prefsPath = workflowDir.appendingPathComponent("prefs.plist")
+    var prefsDict: [String: Any]? = nil
+    if FileManager.default.fileExists(atPath: prefsPath.path),
+       let prefsData = try? Data(contentsOf: prefsPath),
+       let prefsObj = try? PropertyListSerialization.propertyList(from: prefsData, options: [], format: nil) {
+        prefsDict = prefsObj as? [String: Any]
+    }
+    
+    // Process matches in reverse order to maintain string indices
+    for match in matches.reversed() {
+        let fullMatchRange = match.range(at: 0)
+        let variableNameRange = match.range(at: 1)
+        
+        let fullMatch = nsString.substring(with: fullMatchRange)
+        let variableName = nsString.substring(with: variableNameRange)
+        
+        var resolvedValue: String? = nil
+        
+        // First try to get value from prefs.plist
+        if let prefs = prefsDict {
+            resolvedValue = prefs[variableName] as? String
+        }
+        
+        // If not found in prefs, try user config defaults
+        if resolvedValue == nil, let userConfig = userConfig {
+            for configItem in userConfig {
+                if let variable = configItem["variable"] as? String,
+                   variable.lowercased() == variableName.lowercased(),
+                   let config = configItem["config"] as? [String: Any],
+                   let defaultValue = config["default"] as? String {
+                    resolvedValue = defaultValue
+                    break
+                }
+            }
+        }
+        
+        // Replace the pattern with resolved value
+        if let resolved = resolvedValue {
+            resolvedKeyword = (resolvedKeyword as NSString).replacingCharacters(in: fullMatchRange, with: resolved)
+        }
+    }
+    
+    return resolvedKeyword
+}
+
+func extractKeywords(from plist: [String: Any], workflowDir: URL) -> [String] {
+    guard let objects = plist["objects"] as? [[String: Any]] else { return [] }
+    
+    let inputTypes = [
+        "alfred.workflow.input.scriptfilter",
+        "alfred.workflow.input.keyword",
+        "alfred.workflow.input.listfilter",
+        "alfred.workflow.input.filefilter"
+    ]
+    
+    let userConfig = plist["userconfigurationconfig"] as? [[String: Any]]
+    var keywords = [String]()
+    
+    for obj in objects {
+        guard let type = obj["type"] as? String,
+              inputTypes.contains(type),
+              let config = obj["config"] as? [String: Any],
+              let keyword = config["keyword"] as? String,
+              !keyword.isEmpty else { continue }
+        
+        // Resolve any {var:} patterns in the keyword
+        var finalKeyword = resolveVariableKeyword(keyword, workflowDir: workflowDir, userConfig: userConfig)
+        
+        // Strip all whitespace from the keyword
+        let strippedKeyword = finalKeyword.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if !strippedKeyword.isEmpty {
+            keywords.append(strippedKeyword)
+        }
+    }
+    
+    return keywords
 }
 
 // MARK: - Main
@@ -82,19 +176,34 @@ for workflowDir in workflowDirs {
     // Extract other basic workflow information.
     let name = plist["name"] as? String ?? "Unknown"
     let desc = plist["description"] as? String ?? ""
-    let category = categoryRaw.isEmpty ? "" : "🧷 \(categoryRaw)"
+    let category = categoryRaw.isEmpty ? "" : "🧷\(categoryRaw)"
     let versionRaw = plist["version"] as? String ?? ""
     let version = versionRaw.isEmpty ? "" : "v\(versionRaw)"
     let bundleid = plist["bundleid"] as? String ?? ""
     let createdbyRaw = plist["createdby"] as? String ?? ""
     let createdby = createdbyRaw.isEmpty ? "" : "by 👤\(createdbyRaw)"
     
-    // Build subtitle (combine creator and description, or fallback).
+    // Extract keywords for use in subtitle and match
+    let keywords = extractKeywords(from: plist, workflowDir: workflowDir)
+    let keywordsCommaSeparated = keywords.joined(separator: ", ")
+    
+    // Build subtitle (combine creator, category, and description/keywords).
     var subtitleParts = [String]()
     if !createdby.isEmpty { subtitleParts.append(createdby) }
     if !category.isEmpty { subtitleParts.append(category) }
-    if !desc.isEmpty { subtitleParts.append(desc) }
-    let subtitle = subtitleParts.isEmpty ? "No author, category or description" : subtitleParts.joined(separator: "・")
+    
+    // Add either keywords or description based on user configuration
+    if Environment.showKeywords {
+        if !keywords.isEmpty {
+            let keywordsString = "🔑Keywords: " + keywordsCommaSeparated
+            subtitleParts.append(keywordsString)
+        }
+    } else {
+        if !desc.isEmpty { subtitleParts.append(desc) }
+    }
+    
+    let fallbackMessage = Environment.showKeywords ? "No author, category or keywords" : "No author, category or description"
+    let subtitle = subtitleParts.isEmpty ? fallbackMessage : subtitleParts.joined(separator: "・")
     
     // Build title – add a warning symbol if disabled, and include version if available.
     var titleParts = [String]()
@@ -271,7 +380,7 @@ for workflowDir in workflowDirs {
         "action": [String: Any](),  // empty action object
         "arg": folderName,
         "icon": iconDict,
-        "match": "\(desc) \(createdby) \(name)"
+        "match": Environment.showKeywords ? "\(keywordsCommaSeparated) \(createdby) \(name)" : "\(desc) \(createdby) \(name)"
     ]
     
     if enabled {
