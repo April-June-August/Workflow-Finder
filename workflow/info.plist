@@ -1309,12 +1309,12 @@ Info for this workflow:
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string></string>
+				<string>Only show enabled workflows</string>
 			</dict>
 			<key>description</key>
-			<string>Show</string>
+			<string></string>
 			<key>label</key>
-			<string>Show Enabled Workflows Only</string>
+			<string>Filtering</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
@@ -1338,9 +1338,9 @@ Info for this workflow:
 				</array>
 			</dict>
 			<key>description</key>
-			<string>in subtitles of result. Also allows you to search workflows by the keyword.</string>
+			<string>What to show in the subtitle. ‘Keywords’ also allows you to search workflows by their keywords.</string>
 			<key>label</key>
-			<string></string>
+			<string>Details</string>
 			<key>type</key>
 			<string>popupbutton</string>
 			<key>variable</key>
