@@ -523,7 +523,7 @@ if command -v xcrun &amp;&gt; /dev/null &amp;&amp; xcrun --find swiftc &amp;&gt;
 		swift ./list_workflow.swift                             # immediate execution
     fi
 else
-    swift browser.swift "$1"  # fallback to direct execution (slow)
+    swift ./list_workflow.swift # fallback to direct execution (slow)
 fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
