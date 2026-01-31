@@ -229,6 +229,24 @@ func resolveAction(
             )
         }
 
+    case "Reload Workflow":
+        return ActionDetails(
+            subtitle: "Reload ‘\(name)’ workflow in Alfred.",
+            arg: folderName,
+            icon: ["path": "icons/Alfred Preferences.png"],
+            valid: true,
+            variables: ["chosen_action": "Reload Workflow"]
+        )
+
+    case "Export Workflow":
+        return ActionDetails(
+            subtitle: "Export as ‘\(name).alfredworkflow’.",
+            arg: workflowFolderPath,
+            icon: ["path": "icons/alfred_workflow.png"],
+            valid: true,
+            variables: ["chosen_action": "Export Workflow"]
+        )
+
     case "Trash Workflow":
         return ActionDetails(
             subtitle: "Trash workflow ‘\(name)’. Can be undone from the Trash.",
@@ -237,16 +255,6 @@ func resolveAction(
             valid: true,
             variables: ["chosen_action": "Trash Workflow"]
         )
-
-    case "Export Workflow":
-        return ActionDetails(
-            subtitle: "Export as '\(name).alfredworkflow' to your Desktop",
-            arg: workflowFolderPath,
-            icon: ["path": "icons/alfred_workflow.png"],
-            valid: true,
-            variables: ["chosen_action": "Export Workflow"]
-        )
-
 
     default:
         // Fallback to Edit Workflow in Alfred
@@ -466,8 +474,9 @@ for workflowDir in workflowDirs {
         "Show Workflow Folder",
         "Show Data Folder",
         "Show Cache Folder",
-        "Trash Workflow",
-        "Export Workflow"
+        "Reload Workflow",
+        "Export Workflow",
+        "Trash Workflow"
     ]
 
     var secondaryMenuItems = [[String: Any]]()

@@ -97,6 +97,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>4E8D2493-D0AE-4883-B22A-CBA46CD57488</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4991D357-DF82-4CB2-A637-A63043DE004C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</key>
 		<array>
 			<dict>
@@ -133,7 +146,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<true/>
+				<false/>
 			</dict>
 		</array>
 		<key>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</key>
@@ -287,13 +300,13 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</string>
+				<string>4E8D2493-D0AE-4883-B22A-CBA46CD57488</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>sourceoutputuid</key>
-				<string>F894DE3C-7655-4195-808E-6FB279BCCB58</string>
+				<string>00A7BAC7-7BEE-47FA-B51B-99DE09F28E0C</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -306,6 +319,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>D7A594C6-287A-4814-B611-42E810CAB8BF</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>F894DE3C-7655-4195-808E-6FB279BCCB58</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -431,6 +456,97 @@
 			<string>F9448D6C-3395-4058-82DC-BA26924098B4</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  var workflowID = argv[0];
+  var alfred = Application("com.runningwithcrayons.Alfred");
+  alfred.revealWorkflow(workflowID);
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>3</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>{var:search_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading workflows…</string>
+				<key>script</key>
+				<string>stale() {
+    (( $(date -r "$1" +%s) &gt; $(date -r "$2" +%s) ))
+}
+
+if command -v xcrun &amp;&gt; /dev/null &amp;&amp; xcrun --find swiftc &amp;&gt; /dev/null; then
+    if [[ -f ./list_workflow ]] &amp;&amp; ! $(stale ./list_workflow.swift ./list_workflow); then
+        ./list_workflow
+    else
+		xcrun swiftc ./list_workflow.swift -o ./list_workflow &amp; # background compilation
+		swift ./list_workflow.swift                             # immediate execution
+    fi
+else
+    swift ./list_workflow.swift # fallback to direct execution (slow)
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>{const:alfred_workflow_description}</string>
+				<key>title</key>
+				<string>{const:alfred_workflow_name}</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -571,11 +687,11 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>Trash Workflow</string>
+						<string>Reload Workflow</string>
 						<key>outputlabel</key>
-						<string>Trash Workflow</string>
+						<string>Reload Workflow</string>
 						<key>uid</key>
-						<string>F894DE3C-7655-4195-808E-6FB279BCCB58</string>
+						<string>00A7BAC7-7BEE-47FA-B51B-99DE09F28E0C</string>
 					</dict>
 					<dict>
 						<key>inputstring</key>
@@ -591,6 +707,20 @@
 						<key>uid</key>
 						<string>D7A594C6-287A-4814-B611-42E810CAB8BF</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Trash Workflow</string>
+						<key>outputlabel</key>
+						<string>Trash Workflow</string>
+						<key>uid</key>
+						<string>F894DE3C-7655-4195-808E-6FB279BCCB58</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -603,97 +733,6 @@
 			<string>9AE0290F-3CE2-4416-828C-DF2D3FDD9AF3</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>function run(argv) {
-  var workflowID = argv[0];
-  var alfred = Application("com.runningwithcrayons.Alfred");
-  alfred.revealWorkflow(workflowID);
-}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>7</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>3</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>{var:search_keyword}</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>1</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading workflows…</string>
-				<key>script</key>
-				<string>stale() {
-    (( $(date -r "$1" +%s) &gt; $(date -r "$2" +%s) ))
-}
-
-if command -v xcrun &amp;&gt; /dev/null &amp;&amp; xcrun --find swiftc &amp;&gt; /dev/null; then
-    if [[ -f ./list_workflow ]] &amp;&amp; ! $(stale ./list_workflow.swift ./list_workflow); then
-        ./list_workflow
-    else
-		xcrun swiftc ./list_workflow.swift -o ./list_workflow &amp; # background compilation
-		swift ./list_workflow.swift                             # immediate execution
-    fi
-else
-    swift ./list_workflow.swift # fallback to direct execution (slow)
-fi</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>skipuniversalaction</key>
-				<true/>
-				<key>subtext</key>
-				<string>{const:alfred_workflow_description}</string>
-				<key>title</key>
-				<string>{const:alfred_workflow_name}</string>
-				<key>type</key>
-				<integer>11</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</string>
-			<key>version</key>
-			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -731,14 +770,6 @@ fi</string>
 			<integer>2</integer>
 		</dict>
 		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>9424C880-E3D9-4724-AB50-1B098DBDF2C7</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>config</key>
 			<dict>
 				<key>availableviaurlhandler</key>
@@ -750,6 +781,14 @@ fi</string>
 			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
 			<string>D131091B-D94A-4446-8E84-03C7FEC9E870</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>9424C880-E3D9-4724-AB50-1B098DBDF2C7</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -940,14 +979,6 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>14E0F996-2264-4F9C-B49A-8B78AF395DC1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>config</key>
 			<dict>
 				<key>path</key>
@@ -964,22 +995,7 @@ fi</string>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
-			<string>470396EF-1C4E-426D-92B9-B874C19CD98C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>tasksettings</key>
-				<dict/>
-				<key>taskuid</key>
-				<string>com.alfredapp.automation.core/files-and-folders/path.trash</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.automation.task</string>
-			<key>uid</key>
-			<string>45C0E52D-1030-451F-93AB-01227150D2F8</string>
+			<string>14E0F996-2264-4F9C-B49A-8B78AF395DC1</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -987,7 +1003,42 @@ fi</string>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
-			<string>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</string>
+			<string>470396EF-1C4E-426D-92B9-B874C19CD98C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  var workflowID = argv[0];
+  var alfred = Application("com.runningwithcrayons.Alfred");
+  alfred.reloadWorkflow(workflowID,);
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>4991D357-DF82-4CB2-A637-A63043DE004C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>4E8D2493-D0AE-4883-B22A-CBA46CD57488</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1065,6 +1116,29 @@ fi</string>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
 			<string>F870BAB8-3592-4C2C-BD9E-091E744514DD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict/>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.core/files-and-folders/path.trash</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>45C0E52D-1030-451F-93AB-01227150D2F8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1153,9 +1227,9 @@ Info for this workflow:
 		<key>45C0E52D-1030-451F-93AB-01227150D2F8</key>
 		<dict>
 			<key>xpos</key>
-			<real>1605</real>
+			<real>1470</real>
 			<key>ypos</key>
-			<real>705</real>
+			<real>845</real>
 		</dict>
 		<key>470396EF-1C4E-426D-92B9-B874C19CD98C</key>
 		<dict>
@@ -1166,6 +1240,13 @@ Info for this workflow:
 			<key>ypos</key>
 			<real>665</real>
 		</dict>
+		<key>4991D357-DF82-4CB2-A637-A63043DE004C</key>
+		<dict>
+			<key>xpos</key>
+			<real>1470</real>
+			<key>ypos</key>
+			<real>705</real>
+		</dict>
 		<key>4A601980-D1E2-4A2F-9A05-2FAD9C9226C5</key>
 		<dict>
 			<key>note</key>
@@ -1174,6 +1255,15 @@ Info for this workflow:
 			<real>990</real>
 			<key>ypos</key>
 			<real>510</real>
+		</dict>
+		<key>4E8D2493-D0AE-4883-B22A-CBA46CD57488</key>
+		<dict>
+			<key>note</key>
+			<string>Reload Workflow</string>
+			<key>xpos</key>
+			<real>990</real>
+			<key>ypos</key>
+			<real>735</real>
 		</dict>
 		<key>56DBD143-529E-4EBF-BA60-E70306D60A4E</key>
 		<dict>
@@ -1189,7 +1279,7 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>735</real>
+			<real>875</real>
 		</dict>
 		<key>5EC13276-3F66-4CF8-BCA6-C72F2F7D1FBC</key>
 		<dict>
@@ -1267,7 +1357,7 @@ Info for this workflow:
 			<key>note</key>
 			<string>https://www.alfredforum.com/topic/9873-how-to-package-workflows-via-the-command-line/</string>
 			<key>xpos</key>
-			<real>1155</real>
+			<real>1135</real>
 			<key>ypos</key>
 			<real>775</real>
 		</dict>
@@ -1290,7 +1380,7 @@ Info for this workflow:
 		<key>EE60A7B3-2E84-4ED1-A60B-06A482833B2D</key>
 		<dict>
 			<key>xpos</key>
-			<real>1320</real>
+			<real>1305</real>
 			<key>ypos</key>
 			<real>780</real>
 		</dict>
@@ -1378,12 +1468,16 @@ Info for this workflow:
 						<string>Show Cache Folder</string>
 					</array>
 					<array>
-						<string>Trash Workflow</string>
-						<string>Trash Workflow</string>
+						<string>Reload Workflow</string>
+						<string>Reload Workflow</string>
 					</array>
 					<array>
 						<string>Export Workflow</string>
 						<string>Export Workflow</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
 					</array>
 				</array>
 			</dict>
@@ -1440,12 +1534,16 @@ Info for this workflow:
 						<string>Show Cache Folder</string>
 					</array>
 					<array>
-						<string>Trash Workflow</string>
-						<string>Trash Workflow</string>
+						<string>Reload Workflow</string>
+						<string>Reload Workflow</string>
 					</array>
 					<array>
 						<string>Export Workflow</string>
 						<string>Export Workflow</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
 					</array>
 				</array>
 			</dict>
@@ -1502,12 +1600,16 @@ Info for this workflow:
 						<string>Show Cache Folder</string>
 					</array>
 					<array>
-						<string>Trash Workflow</string>
-						<string>Trash Workflow</string>
+						<string>Reload Workflow</string>
+						<string>Reload Workflow</string>
 					</array>
 					<array>
 						<string>Export Workflow</string>
 						<string>Export Workflow</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
 					</array>
 				</array>
 			</dict>
@@ -1564,12 +1666,16 @@ Info for this workflow:
 						<string>Show Cache Folder</string>
 					</array>
 					<array>
-						<string>Trash Workflow</string>
-						<string>Trash Workflow</string>
+						<string>Reload Workflow</string>
+						<string>Reload Workflow</string>
 					</array>
 					<array>
 						<string>Export Workflow</string>
 						<string>Export Workflow</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
 					</array>
 				</array>
 			</dict>
@@ -1626,12 +1732,16 @@ Info for this workflow:
 						<string>Show Cache Folder</string>
 					</array>
 					<array>
-						<string>Trash Workflow</string>
-						<string>Trash Workflow</string>
+						<string>Reload Workflow</string>
+						<string>Reload Workflow</string>
 					</array>
 					<array>
 						<string>Export Workflow</string>
 						<string>Export Workflow</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
 					</array>
 				</array>
 			</dict>
