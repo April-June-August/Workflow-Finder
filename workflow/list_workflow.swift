@@ -221,8 +221,17 @@ for workflowDir in workflowDirs {
     
     // --- Build the secondary menu (shown via the alt modifier) ---
     var secondaryMenuItems = [[String: Any]]()
-    
-    // 1. Open Configuration
+
+    // 1. Edit Workflow in Alfred
+    secondaryMenuItems.append([
+        "title": "Edit Workflow in Alfred",
+        "subtitle": "Edit ‘\(name)’ workflow in Alfred Preferences.",
+        "variables": ["chosen_action": "Edit Workflow in Alfred"],
+        "icon": ["path": "icons/Alfred Preferences.png"],
+        "arg": folderName
+    ])
+
+    // 2. Open Configuration
     secondaryMenuItems.append([
         "title": "Open Configuration",
         "subtitle": "Open configuration of ‘\(name)’ in Alfred Preferences.",
@@ -231,7 +240,7 @@ for workflowDir in workflowDirs {
         "arg": folderName
     ])
     
-    // 2. Copy Bundle Id
+    // 3. Copy Bundle Id
     if bundleid.isEmpty {
         secondaryMenuItems.append([
             "title": "Copy Bundle Id",
@@ -249,7 +258,7 @@ for workflowDir in workflowDirs {
         ])
     }
 
-    // 3. Copy workflow name
+    // 4. Copy Workflow Name
     secondaryMenuItems.append([
         "title": "Copy Workflow Name",
         "subtitle": "Copy workflow name ‘\(name)’",
@@ -258,18 +267,18 @@ for workflowDir in workflowDirs {
         "icon": ["path": "icons/copy.png"]
     ])
     
-    // 4. Copy workflow info (includes macOS and Alfred version)
+    // 5. Copy Workflow Information (includes macOS and Alfred version)
     let macVersion = getMacOSVersion()
     let infoArg = "\(name)・\(version.isEmpty ? "version empty" : version), bundle ID: \(bundleid.isEmpty ? "no bundle Id" : bundleid) . Alfred version: \(Environment.alfredVersion) \(Environment.alfredVersionBuild). macOS: \(macVersion)."
     secondaryMenuItems.append([
-        "title": "Copy Information for Workflow",
+        "title": "Copy Workflow Information",
         "subtitle": "Copy workflow info for ‘\(name)’. Name, version, bundle Id, macOS and Alfred version included.",
         "arg": infoArg,
-        "variables": ["chosen_action": "Copy Information for Workflow"],
+        "variables": ["chosen_action": "Copy Workflow Information"],
         "icon": ["path": "icons/copy.png"]
     ])
     
-    // 5. Show Workflow Folder
+    // 6. Show Workflow Folder
     secondaryMenuItems.append([
         "title": "Show Workflow Folder",
         "subtitle": "Show workflow folder of ‘\(name)’ in Finder",
@@ -278,7 +287,7 @@ for workflowDir in workflowDirs {
         "icon": ["path": "icons/finder.png"]
     ])
     
-    // 6. Data Folder – use the directory part of alfred_workflow_data
+    // 7. Show Data Folder – use the directory part of alfred_workflow_data
     let workflowDataFolder = URL(fileURLWithPath: Environment.workflowDataFolder)
         .deletingLastPathComponent()
         .appendingPathComponent(bundleid).path
@@ -302,7 +311,7 @@ for workflowDir in workflowDirs {
         ])
     }
     
-    // 7. Cache Folder – use the directory part of alfred_workflow_cache
+    // 8. Show Cache Folder – use the directory part of alfred_workflow_cache
     let workflowCacheFolder = URL(fileURLWithPath: Environment.workflowCacheFolder)
         .deletingLastPathComponent()
         .appendingPathComponent(bundleid).path
@@ -326,7 +335,7 @@ for workflowDir in workflowDirs {
         ])
     }
     
-    // 8. Trash Workflow
+    // 9. Trash Workflow
     secondaryMenuItems.append([
         "title": "Trash Workflow",
         "subtitle": "Trash workflow ‘\(name)’. Can be undone from the Trash.",
@@ -335,7 +344,7 @@ for workflowDir in workflowDirs {
         "icon": ["path": "icons/trash.png"]
     ])
     
-    // 9. Export Workflow
+    // 10. Export Workflow
     secondaryMenuItems.append([
         "title": "Export Workflow",
         "subtitle": "Export as ‘\(name).alfredworkflow’ to your Desktop",
