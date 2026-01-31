@@ -25,6 +25,13 @@ struct Environment {
     .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
     .filter { !$0.isEmpty }
     static let showKeywords = (env["description_or_keywords_to_show_in_subtitle"] ?? "Description") == "Keywords"
+
+    // Customizable modifier keys
+    static let modifierKeyNone = env["modifier_key_none"] ?? "Edit Workflow in Alfred"
+    static let modifierKeyCmd = env["modifier_key_cmd"] ?? "Open Configuration"
+    static let modifierKeyOption = env["modifier_key_option"] ?? "Show All Actions"
+    static let modifierKeyShift = env["modifier_key_shift"] ?? "Show Workflow Folder"
+    static let modifierKeyCtrl = env["modifier_key_ctrl"] ?? "Trash Workflow"
 }
 
 func getMacOSVersion() -> String {
@@ -39,6 +46,220 @@ struct WorkflowHistory: Codable {
     let preferences: Preferences
 }
 
+// MARK: - Action Resolution
+
+struct ActionDetails {
+    let subtitle: String
+    let arg: String
+    let icon: [String: String]
+    let valid: Bool
+    let variables: [String: String]
+}
+
+func buildSecondaryMenuItem(
+    actionName: String,
+    name: String,
+    bundleid: String,
+    workflowFolderPath: String,
+    workflowDataFolder: String,
+    workflowCacheFolder: String,
+    infoArg: String,
+    secondaryMenuJsonString: String,
+    folderName: String,
+    dataFolderExists: Bool,
+    cacheFolderExists: Bool
+) -> [String: Any] {
+    let details = resolveAction(
+        actionName,
+        name: name,
+        bundleid: bundleid,
+        workflowFolderPath: workflowFolderPath,
+        workflowDataFolder: workflowDataFolder,
+        workflowCacheFolder: workflowCacheFolder,
+        infoArg: infoArg,
+        secondaryMenuJsonString: secondaryMenuJsonString,
+        folderName: folderName,
+        dataFolderExists: dataFolderExists,
+        cacheFolderExists: cacheFolderExists
+    )
+
+    var item: [String: Any] = [
+        "title": actionName,
+        "subtitle": details.subtitle,
+        "icon": details.icon
+    ]
+
+    if !details.valid {
+        item["valid"] = false
+    }
+
+    if !details.arg.isEmpty {
+        item["arg"] = details.arg
+    }
+
+    if !details.variables.isEmpty {
+        item["variables"] = details.variables
+    }
+
+    return item
+}
+
+func resolveAction(
+    _ actionName: String,
+    name: String,
+    bundleid: String,
+    workflowFolderPath: String,
+    workflowDataFolder: String,
+    workflowCacheFolder: String,
+    infoArg: String,
+    secondaryMenuJsonString: String,
+    folderName: String,
+    dataFolderExists: Bool,
+    cacheFolderExists: Bool
+) -> ActionDetails {
+    switch actionName {
+    case "Show All Actions":
+        return ActionDetails(
+            subtitle: "Show All Actions",
+            arg: "",
+            icon: ["path": "icons/actions.png"],
+            valid: true,
+            variables: ["script_filter_res": secondaryMenuJsonString, "chosen_action": "Show All Actions"]
+        )
+
+    case "Edit Workflow in Alfred":
+        return ActionDetails(
+            subtitle: "Edit ‘\(name)’ workflow in Alfred Preferences.",
+            arg: folderName,
+            icon: ["path": "icons/Alfred Preferences.png"],
+            valid: true,
+            variables: ["chosen_action": "Edit Workflow in Alfred"]
+        )
+
+    case "Open Configuration":
+        return ActionDetails(
+            subtitle: "Open configuration of ‘\(name)’ in Alfred Preferences.",
+            arg: folderName,
+            icon: ["path": "icons/Alfred Preferences.png"],
+            valid: true,
+            variables: ["chosen_action": "Open Configuration"]
+        )
+
+    case "Copy Bundle Id":
+        if bundleid.isEmpty {
+            return ActionDetails(
+                subtitle: "No Bundle Id",
+                arg: "",
+                icon: ["path": "icons/copy.png"],
+                valid: false,
+                variables: ["chosen_action": "Copy Bundle Id"]
+            )
+        } else {
+            return ActionDetails(
+                subtitle: "Copy Bundle Id for ‘\(name)’: \(bundleid)",
+                arg: bundleid,
+                icon: ["path": "icons/copy.png"],
+                valid: true,
+                variables: ["chosen_action": "Copy Bundle Id"]
+            )
+        }
+
+    case "Copy Workflow Name":
+        return ActionDetails(
+            subtitle: "Copy workflow name ‘\(name)’",
+            arg: name,
+            icon: ["path": "icons/copy.png"],
+            valid: true,
+            variables: ["chosen_action": "Copy Workflow Name"]
+        )
+
+    case "Copy Workflow Information":
+        return ActionDetails(
+            subtitle: "Copy workflow info for ‘\(name)’. Name, version, bundle Id, macOS and Alfred version included.",
+            arg: infoArg,
+            icon: ["path": "icons/copy.png"],
+            valid: true,
+            variables: ["chosen_action": "Copy Workflow Information"]
+        )
+
+    case "Show Workflow Folder":
+        return ActionDetails(
+            subtitle: "Show workflow folder of ‘\(name)’ in Finder",
+            arg: workflowFolderPath,
+            icon: ["path": "icons/finder.png"],
+            valid: true,
+            variables: ["chosen_action": "Show Workflow Folder"]
+        )
+
+    case "Show Data Folder":
+        if dataFolderExists {
+            return ActionDetails(
+                subtitle: "Show data folder of ‘\(name)’ in Finder",
+                arg: workflowDataFolder,
+                icon: ["path": "icons/finder.png"],
+                valid: true,
+                variables: ["chosen_action": "Show Data Folder"]
+            )
+        } else {
+            return ActionDetails(
+                subtitle: "No data folder found for workflow ‘\(name)’.",
+                arg: "",
+                icon: ["path": "icons/Empty.png"],
+                valid: false,
+                variables: ["chosen_action": "Show Data Folder"]
+            )
+        }
+
+    case "Show Cache Folder":
+        if cacheFolderExists {
+            return ActionDetails(
+                subtitle: "Show cache folder of ‘\(name)’ in Finder",
+                arg: workflowCacheFolder,
+                icon: ["path": "icons/finder.png"],
+                valid: true,
+                variables: ["chosen_action": "Show Cache Folder"]
+            )
+        } else {
+            return ActionDetails(
+                subtitle: "No cache folder found for workflow ‘\(name)’.",
+                arg: "",
+                icon: ["path": "icons/Empty.png"],
+                valid: false,
+                variables: ["chosen_action": "Show Cache Folder"]
+            )
+        }
+
+    case "Trash Workflow":
+        return ActionDetails(
+            subtitle: "Trash workflow ‘\(name)’. Can be undone from the Trash.",
+            arg: workflowFolderPath,
+            icon: ["path": "icons/trash.png"],
+            valid: true,
+            variables: ["chosen_action": "Trash Workflow"]
+        )
+
+    case "Export Workflow":
+        return ActionDetails(
+            subtitle: "Export as '\(name).alfredworkflow' to your Desktop",
+            arg: workflowFolderPath,
+            icon: ["path": "icons/alfred_workflow.png"],
+            valid: true,
+            variables: ["chosen_action": "Export Workflow"]
+        )
+
+
+    default:
+        // Fallback to Edit Workflow in Alfred
+        return ActionDetails(
+            subtitle: "Edit ‘\(name)’ workflow in Alfred Preferences.",
+            arg: folderName,
+            icon: ["path": "icons/Alfred Preferences.png"],
+            valid: true,
+            variables: ["chosen_action": "Edit Workflow in Alfred"]
+        )
+    }
+}
+
 // MARK: - Keyword Extraction
 
 func resolveVariableKeyword(_ keyword: String, workflowDir: URL, userConfig: [[String: Any]]?) -> String {
@@ -47,11 +268,11 @@ func resolveVariableKeyword(_ keyword: String, workflowDir: URL, userConfig: [[S
     guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
         return keyword
     }
-    
+
     var resolvedKeyword = keyword
     let nsString = keyword as NSString
     let matches = regex.matches(in: keyword, options: [], range: NSRange(location: 0, length: nsString.length))
-    
+
     // Load prefs.plist if it exists
     let prefsPath = workflowDir.appendingPathComponent("prefs.plist")
     var prefsDict: [String: Any]? = nil
@@ -60,7 +281,7 @@ func resolveVariableKeyword(_ keyword: String, workflowDir: URL, userConfig: [[S
        let prefsObj = try? PropertyListSerialization.propertyList(from: prefsData, options: [], format: nil) {
         prefsDict = prefsObj as? [String: Any]
     }
-    
+
     // Process matches in reverse order to maintain string indices
     for match in matches.reversed() {
         let fullMatchRange = match.range(at: 0)
@@ -94,23 +315,23 @@ func resolveVariableKeyword(_ keyword: String, workflowDir: URL, userConfig: [[S
             resolvedKeyword = (resolvedKeyword as NSString).replacingCharacters(in: fullMatchRange, with: resolved)
         }
     }
-    
+
     return resolvedKeyword
 }
 
 func extractKeywords(from plist: [String: Any], workflowDir: URL) -> [String] {
     guard let objects = plist["objects"] as? [[String: Any]] else { return [] }
-    
+
     let inputTypes = [
         "alfred.workflow.input.scriptfilter",
         "alfred.workflow.input.keyword",
         "alfred.workflow.input.listfilter",
         "alfred.workflow.input.filefilter"
     ]
-    
+
     let userConfig = plist["userconfigurationconfig"] as? [[String: Any]]
     var keywords = [String]()
-    
+
     for obj in objects {
         guard let type = obj["type"] as? String,
               inputTypes.contains(type),
@@ -128,7 +349,7 @@ func extractKeywords(from plist: [String: Any], workflowDir: URL) -> [String] {
             keywords.append(strippedKeyword)
         }
     }
-    
+
     return keywords
 }
 
@@ -152,13 +373,13 @@ var disabledItems = [[String: Any]]()
 for workflowDir in workflowDirs {
     let plistPath = workflowDir.appendingPathComponent("info.plist")
     guard fileManager.fileExists(atPath: plistPath.path) else { continue }
-    
+
     // Read the plist as a dictionary via PropertyListSerialization
     guard let plistData = try? Data(contentsOf: plistPath),
           let plistObj = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil),
           let plist = plistObj as? [String: Any]
     else { continue }
-    
+
     // Determine if workflow is enabled.
     // (Ruby: enabled = (plist['disabled'] == false))
     let enabled = (plist["disabled"] as? Bool) == false
@@ -172,7 +393,7 @@ for workflowDir in workflowDirs {
     if Environment.excludedCategories.contains(categoryRaw) {
         continue
     }
-    
+
     // Extract other basic workflow information.
     let name = plist["name"] as? String ?? "Unknown"
     let desc = plist["description"] as? String ?? ""
@@ -182,16 +403,16 @@ for workflowDir in workflowDirs {
     let bundleid = plist["bundleid"] as? String ?? ""
     let createdbyRaw = plist["createdby"] as? String ?? ""
     let createdby = createdbyRaw.isEmpty ? "" : "by 👤\(createdbyRaw)"
-    
+
     // Extract keywords for use in subtitle and match
     let keywords = extractKeywords(from: plist, workflowDir: workflowDir)
     let keywordsCommaSeparated = keywords.joined(separator: ", ")
-    
+
     // Build subtitle (combine creator, category, and description/keywords).
     var subtitleParts = [String]()
     if !createdby.isEmpty { subtitleParts.append(createdby) }
     if !category.isEmpty { subtitleParts.append(category) }
-    
+
     // Add either keywords or description based on user configuration
     if Environment.showKeywords {
         if !keywords.isEmpty {
@@ -201,10 +422,10 @@ for workflowDir in workflowDirs {
     } else {
         if !desc.isEmpty { subtitleParts.append(desc) }
     }
-    
+
     let fallbackMessage = Environment.showKeywords ? "No author, category or keywords" : "No author, category or description"
     let subtitle = subtitleParts.isEmpty ? fallbackMessage : subtitleParts.joined(separator: "・")
-    
+
     // Build title – add a warning symbol if disabled, and include version if available.
     var titleParts = [String]()
     if enabled {
@@ -214,184 +435,192 @@ for workflowDir in workflowDirs {
     }
     if !version.isEmpty { titleParts.append(version) }
     let title = titleParts.joined(separator: "・")
-    
+
     // Determine workflow folder path and folder name.
     let workflowFolderPath = workflowDir.path
     let folderName = workflowDir.lastPathComponent
-    
+
     // --- Build the secondary menu (shown via the alt modifier) ---
-    var secondaryMenuItems = [[String: Any]]()
-
-    // 1. Edit Workflow in Alfred
-    secondaryMenuItems.append([
-        "title": "Edit Workflow in Alfred",
-        "subtitle": "Edit ‘\(name)’ workflow in Alfred Preferences.",
-        "variables": ["chosen_action": "Edit Workflow in Alfred"],
-        "icon": ["path": "icons/Alfred Preferences.png"],
-        "arg": folderName
-    ])
-
-    // 2. Open Configuration
-    secondaryMenuItems.append([
-        "title": "Open Configuration",
-        "subtitle": "Open configuration of ‘\(name)’ in Alfred Preferences.",
-        "variables": ["chosen_action": "Open Configuration"],
-        "icon": ["path": "icons/Alfred Preferences.png"],
-        "arg": folderName
-    ])
-    
-    // 3. Copy Bundle Id
-    if bundleid.isEmpty {
-        secondaryMenuItems.append([
-            "title": "Copy Bundle Id",
-            "subtitle": "No Bundle Id",
-            "valid": false,
-            "icon": ["path": "icons/copy.png"]
-        ])
-    } else {
-        secondaryMenuItems.append([
-            "title": "Copy Bundle Id",
-            "subtitle": "Copy Bundle Id for ‘\(name)’: \(bundleid)",
-            "arg": bundleid,
-            "variables": ["chosen_action": "Copy Bundle Id"],
-            "icon": ["path": "icons/copy.png"]
-        ])
-    }
-
-    // 4. Copy Workflow Name
-    secondaryMenuItems.append([
-        "title": "Copy Workflow Name",
-        "subtitle": "Copy workflow name ‘\(name)’",
-        "arg": name,
-        "variables": ["chosen_action": "Copy Workflow Name"],
-        "icon": ["path": "icons/copy.png"]
-    ])
-    
-    // 5. Copy Workflow Information (includes macOS and Alfred version)
+    // First, calculate the data needed for action resolution
     let macVersion = getMacOSVersion()
     let infoArg = "\(name)・\(version.isEmpty ? "version empty" : version), bundle ID: \(bundleid.isEmpty ? "no bundle Id" : bundleid) . Alfred version: \(Environment.alfredVersion) \(Environment.alfredVersionBuild). macOS: \(macVersion)."
-    secondaryMenuItems.append([
-        "title": "Copy Workflow Information",
-        "subtitle": "Copy workflow info for ‘\(name)’. Name, version, bundle Id, macOS and Alfred version included.",
-        "arg": infoArg,
-        "variables": ["chosen_action": "Copy Workflow Information"],
-        "icon": ["path": "icons/copy.png"]
-    ])
-    
-    // 6. Show Workflow Folder
-    secondaryMenuItems.append([
-        "title": "Show Workflow Folder",
-        "subtitle": "Show workflow folder of ‘\(name)’ in Finder",
-        "arg": workflowFolderPath,
-        "variables": ["chosen_action": "Show Workflow Folder"],
-        "icon": ["path": "icons/finder.png"]
-    ])
-    
-    // 7. Show Data Folder – use the directory part of alfred_workflow_data
+
+    // Calculate folder paths and existence
     let workflowDataFolder = URL(fileURLWithPath: Environment.workflowDataFolder)
         .deletingLastPathComponent()
         .appendingPathComponent(bundleid).path
-    var dataFolderMod: [String: Any] = [:]
-    if !bundleid.isEmpty && fileManager.isDirectory(atPath: workflowDataFolder) {
-        dataFolderMod = ["subtitle": "Data folder", "arg": workflowDataFolder, "icon": ["path": "icons/finder.png"]]
-        secondaryMenuItems.append([
-            "title": "Show Data Folder",
-            "subtitle": "Show data folder of ‘\(name)’ in Finder",
-            "arg": workflowDataFolder,
-            "variables": ["chosen_action": "Show Data Folder"],
-            "icon": ["path": "icons/finder.png"]
-        ])
-    } else {
-        dataFolderMod = ["subtitle": "No data folder found", "valid": false, "icon": ["path": "icons/Empty.png"]]
-        secondaryMenuItems.append([
-            "title": "No Data folder Found",
-            "subtitle": "No data folder found for workflow ‘\(name)’.",
-            "valid": false,
-            "icon": ["path": "icons/Empty.png"]
-        ])
-    }
-    
-    // 8. Show Cache Folder – use the directory part of alfred_workflow_cache
+    let dataFolderExists = !bundleid.isEmpty && fileManager.isDirectory(atPath: workflowDataFolder)
+
     let workflowCacheFolder = URL(fileURLWithPath: Environment.workflowCacheFolder)
         .deletingLastPathComponent()
         .appendingPathComponent(bundleid).path
-    var cacheFolderMod: [String: Any] = [:]
-    if !bundleid.isEmpty && fileManager.isDirectory(atPath: workflowCacheFolder) {
-        cacheFolderMod = ["subtitle": "Cache folder", "arg": workflowCacheFolder, "icon": ["path": "icons/finder.png"]]
-        secondaryMenuItems.append([
-            "title": "Show Cache Folder",
-            "subtitle": "Show cache folder of ‘\(name)’ in Finder",
-            "arg": workflowCacheFolder,
-            "variables": ["chosen_action": "Show Cache Folder"],
-            "icon": ["path": "icons/finder.png"]
-        ])
-    } else {
-        cacheFolderMod = ["subtitle": "No cache folder found", "valid": false, "icon": ["path": "icons/Empty.png"]]
-        secondaryMenuItems.append([
-            "title": "No cache folder Found",
-            "subtitle": "No cache folder found for workflow ‘\(name)’.",
-            "valid": false,
-            "icon": ["path": "icons/Empty.png"]
-        ])
+    let cacheFolderExists = !bundleid.isEmpty && fileManager.isDirectory(atPath: workflowCacheFolder)
+
+    // Build secondary menu items using the helper function
+    let actionNames = [
+        "Edit Workflow in Alfred",
+        "Open Configuration",
+        "Copy Bundle Id",
+        "Copy Workflow Name",
+        "Copy Workflow Information",
+        "Show Workflow Folder",
+        "Show Data Folder",
+        "Show Cache Folder",
+        "Trash Workflow",
+        "Export Workflow"
+    ]
+
+    var secondaryMenuItems = [[String: Any]]()
+    for actionName in actionNames {
+        let item = buildSecondaryMenuItem(
+            actionName: actionName,
+            name: name,
+            bundleid: bundleid,
+            workflowFolderPath: workflowFolderPath,
+            workflowDataFolder: workflowDataFolder,
+            workflowCacheFolder: workflowCacheFolder,
+            infoArg: infoArg,
+            secondaryMenuJsonString: "",  // Will be filled later for "Show All Actions"
+            folderName: folderName,
+            dataFolderExists: dataFolderExists,
+            cacheFolderExists: cacheFolderExists
+        )
+        secondaryMenuItems.append(item)
     }
-    
-    // 9. Trash Workflow
-    secondaryMenuItems.append([
-        "title": "Trash Workflow",
-        "subtitle": "Trash workflow ‘\(name)’. Can be undone from the Trash.",
-        "arg": workflowFolderPath,
-        "variables": ["chosen_action": "Trash Workflow"],
-        "icon": ["path": "icons/trash.png"]
-    ])
-    
-    // 10. Export Workflow
-    secondaryMenuItems.append([
-        "title": "Export Workflow",
-        "subtitle": "Export as ‘\(name).alfredworkflow’ to your Desktop",
-        "arg": workflowFolderPath,
-        "variables": ["chosen_action": "Export Workflow"],
-        "icon": ["path": "icons/alfred_workflow.png"]
-    ])
-    
+
     // Build the secondary menu JSON (to be passed via the alt modifier)
     let secondaryMenuJson: [String: Any] = ["items": secondaryMenuItems]
     let secondaryMenuJsonData = try? JSONSerialization.data(withJSONObject: secondaryMenuJson, options: [])
     let secondaryMenuJsonString = secondaryMenuJsonData.flatMap { String(data: $0, encoding: .utf8) } ?? ""
-    
+
+    // --- Resolve actions based on environment variables ---
+    let defaultAction = resolveAction(
+        Environment.modifierKeyNone,
+        name: name,
+        bundleid: bundleid,
+        workflowFolderPath: workflowFolderPath,
+        workflowDataFolder: workflowDataFolder,
+        workflowCacheFolder: workflowCacheFolder,
+        infoArg: infoArg,
+        secondaryMenuJsonString: secondaryMenuJsonString,
+        folderName: folderName,
+        dataFolderExists: dataFolderExists,
+        cacheFolderExists: cacheFolderExists
+    )
+
+    let cmdAction = resolveAction(
+        Environment.modifierKeyCmd,
+        name: name,
+        bundleid: bundleid,
+        workflowFolderPath: workflowFolderPath,
+        workflowDataFolder: workflowDataFolder,
+        workflowCacheFolder: workflowCacheFolder,
+        infoArg: infoArg,
+        secondaryMenuJsonString: secondaryMenuJsonString,
+        folderName: folderName,
+        dataFolderExists: dataFolderExists,
+        cacheFolderExists: cacheFolderExists
+    )
+
+    let optionAction = resolveAction(
+        Environment.modifierKeyOption,
+        name: name,
+        bundleid: bundleid,
+        workflowFolderPath: workflowFolderPath,
+        workflowDataFolder: workflowDataFolder,
+        workflowCacheFolder: workflowCacheFolder,
+        infoArg: infoArg,
+        secondaryMenuJsonString: secondaryMenuJsonString,
+        folderName: folderName,
+        dataFolderExists: dataFolderExists,
+        cacheFolderExists: cacheFolderExists
+    )
+
+    let shiftAction = resolveAction(
+        Environment.modifierKeyShift,
+        name: name,
+        bundleid: bundleid,
+        workflowFolderPath: workflowFolderPath,
+        workflowDataFolder: workflowDataFolder,
+        workflowCacheFolder: workflowCacheFolder,
+        infoArg: infoArg,
+        secondaryMenuJsonString: secondaryMenuJsonString,
+        folderName: folderName,
+        dataFolderExists: dataFolderExists,
+        cacheFolderExists: cacheFolderExists
+    )
+
+    let ctrlAction = resolveAction(
+        Environment.modifierKeyCtrl,
+        name: name,
+        bundleid: bundleid,
+        workflowFolderPath: workflowFolderPath,
+        workflowDataFolder: workflowDataFolder,
+        workflowCacheFolder: workflowCacheFolder,
+        infoArg: infoArg,
+        secondaryMenuJsonString: secondaryMenuJsonString,
+        folderName: folderName,
+        dataFolderExists: dataFolderExists,
+        cacheFolderExists: cacheFolderExists
+    )
+
     // --- Build the main modifiers dictionary ---
     var mods = [String: [String: Any]]()
-    mods["cmd"] = ["subtitle": "Open configuration", "icon": ["path": "icons/Alfred Preferences.png"]]
-    if bundleid.isEmpty {
-        mods["shift+cmd"] = ["subtitle": "No Bundle Id", "valid": false, "icon": ["path": "icons/copy.png"]]
-    } else {
-        mods["shift+cmd"] = ["subtitle": "Copy Bundle Id: \(bundleid)", "arg": bundleid, "icon": ["path": "icons/copy.png"]]
-    }
-    mods["shift+cmd+alt"] = ["subtitle": "Copy workflow info", "arg": infoArg, "icon": ["path": "icons/copy.png"]]
-    mods["shift"] = ["subtitle": "Workflow folder", "arg": workflowFolderPath, "icon": ["path": "icons/finder.png"]]
-    mods["ctrl"] = dataFolderMod
-    mods["alt+ctrl"] = cacheFolderMod
-    mods["shift+ctrl"] = ["subtitle": "Trash workflow", "arg": workflowFolderPath, "icon": ["path": "icons/trash.png"]]
-    mods["alt"] = ["subtitle": "Show All Actions",
-                   "variables": ["script_filter_res": secondaryMenuJsonString],
-                   "arg": "",
-                   "icon": ["path": "icons/actions.png"]]
-    
+
+    // Build mod entry for cmd
+    var cmdMod: [String: Any] = ["subtitle": cmdAction.subtitle, "icon": cmdAction.icon]
+    if !cmdAction.valid { cmdMod["valid"] = false }
+    if !cmdAction.arg.isEmpty { cmdMod["arg"] = cmdAction.arg }
+    if !cmdAction.variables.isEmpty { cmdMod["variables"] = cmdAction.variables }
+    mods["cmd"] = cmdMod
+
+    // Build mod entry for option (alt)
+    var optionMod: [String: Any] = ["subtitle": optionAction.subtitle, "icon": optionAction.icon]
+    if !optionAction.valid { optionMod["valid"] = false }
+    if !optionAction.arg.isEmpty { optionMod["arg"] = optionAction.arg }
+    if !optionAction.variables.isEmpty { optionMod["variables"] = optionAction.variables }
+    mods["alt"] = optionMod
+
+    // Build mod entry for shift
+    var shiftMod: [String: Any] = ["subtitle": shiftAction.subtitle, "icon": shiftAction.icon]
+    if !shiftAction.valid { shiftMod["valid"] = false }
+    if !shiftAction.arg.isEmpty { shiftMod["arg"] = shiftAction.arg }
+    if !shiftAction.variables.isEmpty { shiftMod["variables"] = shiftAction.variables }
+    mods["shift"] = shiftMod
+
+    // Build mod entry for ctrl
+    var ctrlMod: [String: Any] = ["subtitle": ctrlAction.subtitle, "icon": ctrlAction.icon]
+    if !ctrlAction.valid { ctrlMod["valid"] = false }
+    if !ctrlAction.arg.isEmpty { ctrlMod["arg"] = ctrlAction.arg }
+    if !ctrlAction.variables.isEmpty { ctrlMod["variables"] = ctrlAction.variables }
+    mods["ctrl"] = ctrlMod
+
     // Determine the main icon (use icon.png if it exists, otherwise fallback)
     let iconPathCandidate = workflowDir.appendingPathComponent("icon.png").path
     let mainIconPath = fileManager.fileExists(atPath: iconPathCandidate) ? iconPathCandidate : "icons/Empty.png"
     let iconDict = ["path": mainIconPath]
-    
-    // Build the main item
-    let item: [String: Any] = [
+
+    // Build the main item with dynamic default action
+    var item: [String: Any] = [
         "title": title,
         "subtitle": subtitle.isEmpty ? "No description or version" : subtitle,
         "mods": mods,
         "action": [String: Any](),  // empty action object
-        "arg": folderName,
+        "arg": defaultAction.arg,
         "icon": iconDict,
         "match": Environment.showKeywords ? "\(keywordsCommaSeparated) \(createdby) \(name)" : "\(desc) \(createdby) \(name)"
     ]
-    
+
+    // Add variables from default action
+    if !defaultAction.variables.isEmpty {
+        item["variables"] = defaultAction.variables
+    }
+
+    // Add valid flag if needed
+    if !defaultAction.valid {
+        item["valid"] = false
+    }
+
     if enabled {
         enabledItems.append(item)
     } else {

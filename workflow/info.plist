@@ -127,93 +127,13 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>DB73B891-AB2D-4D82-9A33-2BF2A560DE3B</string>
+				<string>9AE0290F-3CE2-4416-828C-DF2D3FDD9AF3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>9424C880-E3D9-4724-AB50-1B098DBDF2C7</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</string>
-				<key>modifiers</key>
-				<integer>1179648</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>9E5B61FB-4400-4257-A205-F3515DBDFE14</string>
-				<key>modifiers</key>
-				<integer>1703936</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>4A601980-D1E2-4A2F-9A05-2FAD9C9226C5</string>
-				<key>modifiers</key>
-				<integer>131072</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>14E0F996-2264-4F9C-B49A-8B78AF395DC1</string>
-				<key>modifiers</key>
-				<integer>262144</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>2F6D1BEC-5076-4BAE-B299-2A73AF63D5C8</string>
-				<key>modifiers</key>
-				<integer>524288</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>470396EF-1C4E-426D-92B9-B874C19CD98C</string>
-				<key>modifiers</key>
-				<integer>786432</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>5BCAAE28-06FA-4BA7-9570-A30D3EED7FCC</string>
-				<key>modifiers</key>
-				<integer>393216</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
 			</dict>
 		</array>
 		<key>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</key>
@@ -259,6 +179,30 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>F9448D6C-3395-4058-82DC-BA26924098B4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>3803192F-2382-4882-A62B-A38C3049852F</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DB73B891-AB2D-4D82-9A33-2BF2A560DE3B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>B35CA7EE-D638-441E-80F1-C14F7242E368</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>9424C880-E3D9-4724-AB50-1B098DBDF2C7</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -271,18 +215,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>98673EE6-6FB8-4804-BFAD-379CE4C215DA</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>4BA74EDC-FD2B-4AB3-8F4E-01A16AF526D3</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -290,6 +222,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>3987074C-7C37-47D0-BAE5-BDCA62D9538C</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>98673EE6-6FB8-4804-BFAD-379CE4C215DA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>4BA74EDC-FD2B-4AB3-8F4E-01A16AF526D3</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -392,6 +336,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>D131091B-D94A-4446-8E84-03C7FEC9E870</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2F6D1BEC-5076-4BAE-B299-2A73AF63D5C8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>DB73B891-AB2D-4D82-9A33-2BF2A560DE3B</key>
 		<array>
 			<dict>
@@ -456,6 +413,197 @@
 	<string>Workflow Finder</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>ShowAllActions</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>F9448D6C-3395-4058-82DC-BA26924098B4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Show All Actions</string>
+						<key>outputlabel</key>
+						<string>Show All Actions</string>
+						<key>uid</key>
+						<string>3803192F-2382-4882-A62B-A38C3049852F</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Edit Workflow in Alfred</string>
+						<key>outputlabel</key>
+						<string>Edit Workflow in Alfred</string>
+						<key>uid</key>
+						<string>B35CA7EE-D638-441E-80F1-C14F7242E368</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Open Configuration</string>
+						<key>outputlabel</key>
+						<string>Open Configuration</string>
+						<key>uid</key>
+						<string>7D944EBC-80EF-4B4B-842B-D23C61B52C93</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Copy Bundle Id</string>
+						<key>outputlabel</key>
+						<string>Copy Bundle Id</string>
+						<key>uid</key>
+						<string>3987074C-7C37-47D0-BAE5-BDCA62D9538C</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Copy Workflow Name</string>
+						<key>outputlabel</key>
+						<string>Copy Workflow Name</string>
+						<key>uid</key>
+						<string>4BA74EDC-FD2B-4AB3-8F4E-01A16AF526D3</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Copy Workflow Information</string>
+						<key>outputlabel</key>
+						<string>Copy Workflow Information</string>
+						<key>uid</key>
+						<string>C439E885-FE06-4791-9986-7771F76275BD</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Show Workflow Folder</string>
+						<key>outputlabel</key>
+						<string>Show Workflow Folder</string>
+						<key>uid</key>
+						<string>F8639907-FC84-4689-8AF2-09F700B9B057</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Show Data Folder</string>
+						<key>outputlabel</key>
+						<string>Show Data Folder</string>
+						<key>uid</key>
+						<string>7BC72369-2D01-4D2C-A7C8-3F2BD765246D</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Show Cache Folder</string>
+						<key>outputlabel</key>
+						<string>Show Cache Folder</string>
+						<key>uid</key>
+						<string>2B4A3F8E-5524-40AD-8C25-E6EAB3A4506C</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Trash Workflow</string>
+						<key>outputlabel</key>
+						<string>Trash Workflow</string>
+						<key>uid</key>
+						<string>F894DE3C-7655-4195-808E-6FB279BCCB58</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:chosen_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>Export Workflow</string>
+						<key>outputlabel</key>
+						<string>Export Workflow</string>
+						<key>uid</key>
+						<string>D7A594C6-287A-4814-B611-42E810CAB8BF</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>9AE0290F-3CE2-4416-828C-DF2D3FDD9AF3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -591,10 +739,74 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>availableviaurlhandler</key>
+				<false/>
+				<key>triggerid</key>
+				<string>ShowAllActions</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>D131091B-D94A-4446-8E84-03C7FEC9E870</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading options…</string>
+				<key>script</key>
+				<string>echo $script_filter_res</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>{const:alfred_workflow_name}</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>2F6D1BEC-5076-4BAE-B299-2A73AF63D5C8</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
-			<string>98673EE6-6FB8-4804-BFAD-379CE4C215DA</string>
+			<string>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -621,7 +833,7 @@ fi</string>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
-			<string>834B6C5A-BAF6-43D1-93AF-75D9AC3CBF76</string>
+			<string>98673EE6-6FB8-4804-BFAD-379CE4C215DA</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -680,150 +892,6 @@ fi</string>
 				<array>
 					<dict>
 						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Open Configuration</string>
-						<key>outputlabel</key>
-						<string>Open Configuration</string>
-						<key>uid</key>
-						<string>7D944EBC-80EF-4B4B-842B-D23C61B52C93</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Copy Workflow Name</string>
-						<key>outputlabel</key>
-						<string>Copy Workflow Name</string>
-						<key>uid</key>
-						<string>4BA74EDC-FD2B-4AB3-8F4E-01A16AF526D3</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Copy Bundle Id</string>
-						<key>outputlabel</key>
-						<string>Copy Bundle Id</string>
-						<key>uid</key>
-						<string>3987074C-7C37-47D0-BAE5-BDCA62D9538C</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Copy Information for Workflow</string>
-						<key>outputlabel</key>
-						<string>Copy Information for Workflow</string>
-						<key>uid</key>
-						<string>C439E885-FE06-4791-9986-7771F76275BD</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Show Workflow Folder</string>
-						<key>outputlabel</key>
-						<string>Show Workflow Folder</string>
-						<key>uid</key>
-						<string>F8639907-FC84-4689-8AF2-09F700B9B057</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Show Data Folder</string>
-						<key>outputlabel</key>
-						<string>Show Data Folder</string>
-						<key>uid</key>
-						<string>7BC72369-2D01-4D2C-A7C8-3F2BD765246D</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Show Cache Folder</string>
-						<key>outputlabel</key>
-						<string>Show Cache Folder</string>
-						<key>uid</key>
-						<string>2B4A3F8E-5524-40AD-8C25-E6EAB3A4506C</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Trash Workflow</string>
-						<key>outputlabel</key>
-						<string>Trash Workflow</string>
-						<key>uid</key>
-						<string>F894DE3C-7655-4195-808E-6FB279BCCB58</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:chosen_action}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>Export Workflow</string>
-						<key>outputlabel</key>
-						<string>Export Workflow</string>
-						<key>uid</key>
-						<string>D7A594C6-287A-4814-B611-42E810CAB8BF</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>9AE0290F-3CE2-4416-828C-DF2D3FDD9AF3</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
 						<string>{var:folder_action}</string>
 						<key>matchcasesensitive</key>
 						<false/>
@@ -872,6 +940,14 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>14E0F996-2264-4F9C-B49A-8B78AF395DC1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>path</key>
@@ -883,63 +959,6 @@ fi</string>
 			<string>20B58494-0D6D-4A7B-894C-46AB01D784CC</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>14E0F996-2264-4F9C-B49A-8B78AF395DC1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading options…</string>
-				<key>script</key>
-				<string>echo $script_filter_res</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>skipuniversalaction</key>
-				<true/>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>{const:alfred_workflow_name}</string>
-				<key>type</key>
-				<integer>11</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>2F6D1BEC-5076-4BAE-B299-2A73AF63D5C8</string>
-			<key>version</key>
-			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -1120,9 +1139,9 @@ Info for this workflow:
 		<key>2F6D1BEC-5076-4BAE-B299-2A73AF63D5C8</key>
 		<dict>
 			<key>xpos</key>
-			<real>355</real>
+			<real>315</real>
 			<key>ypos</key>
-			<real>655</real>
+			<real>200</real>
 		</dict>
 		<key>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</key>
 		<dict>
@@ -1200,7 +1219,7 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>355</real>
+			<real>270</real>
 		</dict>
 		<key>9424C880-E3D9-4724-AB50-1B098DBDF2C7</key>
 		<dict>
@@ -1218,14 +1237,14 @@ Info for this workflow:
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
-			<real>270</real>
+			<real>340</real>
 		</dict>
 		<key>9AE0290F-3CE2-4416-828C-DF2D3FDD9AF3</key>
 		<dict>
 			<key>xpos</key>
-			<real>565</real>
-			<key>ypos</key>
 			<real>570</real>
+			<key>ypos</key>
+			<real>85</real>
 		</dict>
 		<key>9B72B274-89C1-43EF-8EB3-40ECFAD25D75</key>
 		<dict>
@@ -1237,7 +1256,7 @@ Info for this workflow:
 		<key>9E5B61FB-4400-4257-A205-F3515DBDFE14</key>
 		<dict>
 			<key>note</key>
-			<string>Copy Information for Workflow</string>
+			<string>Copy Workflow Information</string>
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
@@ -1252,10 +1271,17 @@ Info for this workflow:
 			<key>ypos</key>
 			<real>775</real>
 		</dict>
+		<key>D131091B-D94A-4446-8E84-03C7FEC9E870</key>
+		<dict>
+			<key>xpos</key>
+			<real>145</real>
+			<key>ypos</key>
+			<real>200</real>
+		</dict>
 		<key>DB73B891-AB2D-4D82-9A33-2BF2A560DE3B</key>
 		<dict>
 			<key>note</key>
-			<string>Edit workflow in Alfred</string>
+			<string>Edit Workflow in Alfred</string>
 			<key>xpos</key>
 			<real>990</real>
 			<key>ypos</key>
@@ -1276,6 +1302,13 @@ Info for this workflow:
 			<real>990</real>
 			<key>ypos</key>
 			<real>805</real>
+		</dict>
+		<key>F9448D6C-3395-4058-82DC-BA26924098B4</key>
+		<dict>
+			<key>xpos</key>
+			<real>815</real>
+			<key>ypos</key>
+			<real>50</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -1300,6 +1333,316 @@ Info for this workflow:
 			<string>textfield</string>
 			<key>variable</key>
 			<string>search_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Edit Workflow in Alfred</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Show All Actions</string>
+						<string>Show All Actions</string>
+					</array>
+					<array>
+						<string>Edit Workflow in Alfred</string>
+						<string>Edit Workflow in Alfred</string>
+					</array>
+					<array>
+						<string>Open Configuration</string>
+						<string>Open Configuration</string>
+					</array>
+					<array>
+						<string>Copy Bundle Id</string>
+						<string>Copy Bundle Id</string>
+					</array>
+					<array>
+						<string>Copy Workflow Name</string>
+						<string>Copy Workflow Name</string>
+					</array>
+					<array>
+						<string>Copy Workflow Information</string>
+						<string>Copy Workflow Information</string>
+					</array>
+					<array>
+						<string>Show Workflow Folder</string>
+						<string>Show Workflow Folder</string>
+					</array>
+					<array>
+						<string>Show Data Folder</string>
+						<string>Show Data Folder</string>
+					</array>
+					<array>
+						<string>Show Cache Folder</string>
+						<string>Show Cache Folder</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
+					</array>
+					<array>
+						<string>Export Workflow</string>
+						<string>Export Workflow</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>↩</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>modifier_key_none</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Open Configuration</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Show All Actions</string>
+						<string>Show All Actions</string>
+					</array>
+					<array>
+						<string>Edit Workflow in Alfred</string>
+						<string>Edit Workflow in Alfred</string>
+					</array>
+					<array>
+						<string>Open Configuration</string>
+						<string>Open Configuration</string>
+					</array>
+					<array>
+						<string>Copy Bundle Id</string>
+						<string>Copy Bundle Id</string>
+					</array>
+					<array>
+						<string>Copy Workflow Name</string>
+						<string>Copy Workflow Name</string>
+					</array>
+					<array>
+						<string>Copy Workflow Information</string>
+						<string>Copy Workflow Information</string>
+					</array>
+					<array>
+						<string>Show Workflow Folder</string>
+						<string>Show Workflow Folder</string>
+					</array>
+					<array>
+						<string>Show Data Folder</string>
+						<string>Show Data Folder</string>
+					</array>
+					<array>
+						<string>Show Cache Folder</string>
+						<string>Show Cache Folder</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
+					</array>
+					<array>
+						<string>Export Workflow</string>
+						<string>Export Workflow</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>⌘↩</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>modifier_key_cmd</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Show All Actions</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Show All Actions</string>
+						<string>Show All Actions</string>
+					</array>
+					<array>
+						<string>Edit Workflow in Alfred</string>
+						<string>Edit Workflow in Alfred</string>
+					</array>
+					<array>
+						<string>Open Configuration</string>
+						<string>Open Configuration</string>
+					</array>
+					<array>
+						<string>Copy Bundle Id</string>
+						<string>Copy Bundle Id</string>
+					</array>
+					<array>
+						<string>Copy Workflow Name</string>
+						<string>Copy Workflow Name</string>
+					</array>
+					<array>
+						<string>Copy Workflow Information</string>
+						<string>Copy Workflow Information</string>
+					</array>
+					<array>
+						<string>Show Workflow Folder</string>
+						<string>Show Workflow Folder</string>
+					</array>
+					<array>
+						<string>Show Data Folder</string>
+						<string>Show Data Folder</string>
+					</array>
+					<array>
+						<string>Show Cache Folder</string>
+						<string>Show Cache Folder</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
+					</array>
+					<array>
+						<string>Export Workflow</string>
+						<string>Export Workflow</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>⌥↩</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>modifier_key_option</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Show Workflow Folder</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Show All Actions</string>
+						<string>Show All Actions</string>
+					</array>
+					<array>
+						<string>Edit Workflow in Alfred</string>
+						<string>Edit Workflow in Alfred</string>
+					</array>
+					<array>
+						<string>Open Configuration</string>
+						<string>Open Configuration</string>
+					</array>
+					<array>
+						<string>Copy Bundle Id</string>
+						<string>Copy Bundle Id</string>
+					</array>
+					<array>
+						<string>Copy Workflow Name</string>
+						<string>Copy Workflow Name</string>
+					</array>
+					<array>
+						<string>Copy Workflow Information</string>
+						<string>Copy Workflow Information</string>
+					</array>
+					<array>
+						<string>Show Workflow Folder</string>
+						<string>Show Workflow Folder</string>
+					</array>
+					<array>
+						<string>Show Data Folder</string>
+						<string>Show Data Folder</string>
+					</array>
+					<array>
+						<string>Show Cache Folder</string>
+						<string>Show Cache Folder</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
+					</array>
+					<array>
+						<string>Export Workflow</string>
+						<string>Export Workflow</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>⇧↩</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>modifier_key_shift</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Trash Workflow</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Show All Actions</string>
+						<string>Show All Actions</string>
+					</array>
+					<array>
+						<string>Edit Workflow in Alfred</string>
+						<string>Edit Workflow in Alfred</string>
+					</array>
+					<array>
+						<string>Open Configuration</string>
+						<string>Open Configuration</string>
+					</array>
+					<array>
+						<string>Copy Bundle Id</string>
+						<string>Copy Bundle Id</string>
+					</array>
+					<array>
+						<string>Copy Workflow Name</string>
+						<string>Copy Workflow Name</string>
+					</array>
+					<array>
+						<string>Copy Workflow Information</string>
+						<string>Copy Workflow Information</string>
+					</array>
+					<array>
+						<string>Show Workflow Folder</string>
+						<string>Show Workflow Folder</string>
+					</array>
+					<array>
+						<string>Show Data Folder</string>
+						<string>Show Data Folder</string>
+					</array>
+					<array>
+						<string>Show Cache Folder</string>
+						<string>Show Cache Folder</string>
+					</array>
+					<array>
+						<string>Trash Workflow</string>
+						<string>Trash Workflow</string>
+					</array>
+					<array>
+						<string>Export Workflow</string>
+						<string>Export Workflow</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>⌃↩</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>modifier_key_ctrl</string>
 		</dict>
 		<dict>
 			<key>config</key>
