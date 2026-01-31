@@ -145,6 +145,15 @@ func resolveAction(
             variables: ["chosen_action": "Open Configuration"]
         )
 
+    case "Edit Details":
+        return ActionDetails(
+            subtitle: "Edit details of ‘\(name)’ in Alfred Preferences.",
+            arg: folderName,
+            icon: ["path": "icons/Alfred Preferences.png"],
+            valid: true,
+            variables: ["chosen_action": "Edit Details"]
+        )
+
     case "Copy Bundle Id":
         if bundleid.isEmpty {
             return ActionDetails(
@@ -468,6 +477,7 @@ for workflowDir in workflowDirs {
     let actionNames = [
         "Edit Workflow in Alfred",
         "Open Configuration",
+        "Edit Details",
         "Copy Bundle Id",
         "Copy Workflow Name",
         "Copy Workflow Information",
