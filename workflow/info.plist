@@ -1233,16 +1233,27 @@ If you want a workflow to find workflows from the [Alfred Gallery](https://alfre
 
 ![](images/showcase_2.png)
 
-- &lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to edit the selected workflow. 
-- &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to open the configuration window for the workflow. 
-- &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;⇧&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to copy the bundle ID for the workflow.
-- &lt;kbd&gt;⇧&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to pass the workflow folder for the workflow to [File Action](https://www.alfredapp.com/blog/tips-and-tricks/file-actions-from-alfred-or-finder/).
-- &lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to pass the data folder for the workflow to File Action.
-- &lt;kbd&gt;⌥&lt;/kbd&gt;&lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to pass the cache folder for the workflow to File Action.
-- &lt;kbd&gt;⇧&lt;/kbd&gt;&lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to trash the workflow (can be undone in the Trash).
-- &lt;kbd&gt;⌥&lt;/kbd&gt;&lt;kbd&gt;⇧&lt;/kbd&gt;&lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; to copy the title, bundle ID, version etc. for the workflow.
+- &lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; Edit in Alfred.
+- &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; Open the configuration page.
+- &lt;kbd&gt;⇧&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; Open the workflow folder.
+- &lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; Trash the workflow.
+- &lt;kbd&gt;⌥&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt; Show all actions.
 
-- &lt;kbd&gt;⌥&lt;/kbd&gt; to show all actions above for the selected workflow — including export the workflow to an `.alfredworkflow` file. 
+All actions available through &lt;kbd&gt;⌥&lt;/kbd&gt;&lt;kbd&gt;↩&amp;#xFE0E;&lt;/kbd&gt;:
+- Edit Workflow in Alfred
+- Open Configuration
+- Edit Details
+- Copy Bundle ID
+- Copy Workflow Name
+- Copy Workflow Information
+- Show Workflow Folder
+- Show Data Folder
+- Show Cache Folder
+- Reload Workflow
+- Export Workflow
+- Trash Workflow
+
+Change default modifier keys for actions in the Workflow's Configuration. 
 
 ![](images/showcase_3.png)
 
