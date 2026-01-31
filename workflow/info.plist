@@ -485,6 +485,97 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  var workflowID = argv[0];
+  var alfred = Application("com.runningwithcrayons.Alfred");
+  alfred.revealWorkflow(workflowID);
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>3</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>{var:search_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading workflows…</string>
+				<key>script</key>
+				<string>stale() {
+    (( $(date -r "$1" +%s) &gt; $(date -r "$2" +%s) ))
+}
+
+if command -v xcrun &amp;&gt; /dev/null &amp;&amp; xcrun --find swiftc &amp;&gt; /dev/null; then
+    if [[ -f ./list_workflow ]] &amp;&amp; ! $(stale ./list_workflow.swift ./list_workflow); then
+        ./list_workflow
+    else
+		xcrun swiftc ./list_workflow.swift -o ./list_workflow &amp; # background compilation
+		swift ./list_workflow.swift                             # immediate execution
+    fi
+else
+    swift ./list_workflow.swift # fallback to direct execution (slow)
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>{const:alfred_workflow_description}</string>
+				<key>title</key>
+				<string>{const:alfred_workflow_name}</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -683,97 +774,6 @@
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>function run(argv) {
-  var workflowID = argv[0];
-  var alfred = Application("com.runningwithcrayons.Alfred");
-  alfred.revealWorkflow(workflowID);
-}</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>7</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>3FF056C7-593A-4065-AB71-9E62F3DF8DD6</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>3</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>{var:search_keyword}</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>1</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading workflows…</string>
-				<key>script</key>
-				<string>stale() {
-    (( $(date -r "$1" +%s) &gt; $(date -r "$2" +%s) ))
-}
-
-if command -v xcrun &amp;&gt; /dev/null &amp;&amp; xcrun --find swiftc &amp;&gt; /dev/null; then
-    if [[ -f ./list_workflow ]] &amp;&amp; ! $(stale ./list_workflow.swift ./list_workflow); then
-        ./list_workflow
-    else
-		xcrun swiftc ./list_workflow.swift -o ./list_workflow &amp; # background compilation
-		swift ./list_workflow.swift                             # immediate execution
-    fi
-else
-    swift ./list_workflow.swift # fallback to direct execution (slow)
-fi</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>skipuniversalaction</key>
-				<true/>
-				<key>subtext</key>
-				<string>{const:alfred_workflow_description}</string>
-				<key>title</key>
-				<string>{const:alfred_workflow_name}</string>
-				<key>type</key>
-				<integer>11</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>67057B88-7984-4DB3-9F2D-FB18C64FA8D1</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -809,14 +809,6 @@ fi</string>
 			<integer>2</integer>
 		</dict>
 		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>9424C880-E3D9-4724-AB50-1B098DBDF2C7</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>config</key>
 			<dict>
 				<key>availableviaurlhandler</key>
@@ -828,6 +820,14 @@ fi</string>
 			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
 			<string>D131091B-D94A-4446-8E84-03C7FEC9E870</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>9424C880-E3D9-4724-AB50-1B098DBDF2C7</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
